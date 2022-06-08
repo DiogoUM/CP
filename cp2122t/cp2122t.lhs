@@ -151,15 +151,12 @@
 
 \begin{center}\large
 \begin{tabular}{ll}
-\textbf{Grupo} nr. & 99 (preencher)
+\textbf{Grupo} nr. & 45
 \\\hline
-a11111 & Nome1 (preencher)
+a94877 & Diogo
 \\
-a22222 & Nome2 (preencher)
-\\
-a33333 & Nome3 (preencher)
-\\
-a44444 & Nome4 (preencher, se aplicável, ou apagar)
+a97536 & Maria
+
 \end{tabular}
 \end{center}
 
@@ -893,13 +890,15 @@ Apresentar cálculos aqui, se desejável acompanhados de diagramas, etc.
 
 \begin{code}
 alice :: Ord c => LTree c -> c
-alice = undefined
+alice (Leaf x) = x
+alice (Fork (e,d)) = max (bob e) (bob d)
 
 bob :: Ord c => LTree c -> c
-bob   = undefined    
+bob (Leaf x) = x
+bob (Fork (e,d)) = min (alice e) (alice d)    
 
 both :: Ord d => LTree d -> (d, d)
-both = undefined
+both t = (alice t, bob t)
 \end{code}
 
 \subsection*{Problema 3}

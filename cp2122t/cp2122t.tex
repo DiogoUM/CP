@@ -1188,20 +1188,22 @@ Apresentar cálculos aqui, se desejável acompanhados de diagramas, etc.
 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
-\column{7}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
 \>[B]{}\Varid{alice}\mathbin{::}\Conid{Ord}\;\Varid{c}\Rightarrow {\LTree}\;\Varid{c}\to \Varid{c}{}\<[E]%
 \\
-\>[B]{}\Varid{alice}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{alice}\;(\Conid{Leaf}\;\Varid{x})\mathrel{=}\Varid{x}{}\<[E]%
+\\
+\>[B]{}\Varid{alice}\;(\Conid{Fork}\;(\Varid{e},\Varid{d}))\mathrel{=}\Varid{max}\;(\Varid{bob}\;\Varid{e})\;(\Varid{bob}\;\Varid{d}){}\<[E]%
 \\[\blanklineskip]%
 \>[B]{}\Varid{bob}\mathbin{::}\Conid{Ord}\;\Varid{c}\Rightarrow {\LTree}\;\Varid{c}\to \Varid{c}{}\<[E]%
 \\
-\>[B]{}\Varid{bob}{}\<[7]%
-\>[7]{}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\mathrel{=}\Varid{x}{}\<[E]%
+\\
+\>[B]{}\Varid{bob}\;(\Conid{Fork}\;(\Varid{e},\Varid{d}))\mathrel{=}\Varid{min}\;(\Varid{alice}\;\Varid{e})\;(\Varid{alice}\;\Varid{d}){}\<[E]%
 \\[\blanklineskip]%
 \>[B]{}\Varid{both}\mathbin{::}\Conid{Ord}\;\Varid{d}\Rightarrow {\LTree}\;\Varid{d}\to (\Varid{d},\Varid{d}){}\<[E]%
 \\
-\>[B]{}\Varid{both}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{both}\;\Varid{t}\mathrel{=}(\Varid{alice}\;\Varid{t},\Varid{bob}\;\Varid{t}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
