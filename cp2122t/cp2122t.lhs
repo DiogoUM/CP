@@ -153,9 +153,9 @@
 \begin{tabular}{ll}
 \textbf{Grupo} nr. & 45
 \\\hline
-a94877 & Diogo
+a94877 & Diogo Ferreira
 \\
-a97536 & Maria
+a97536 & Maria Rodrigues
 
 \end{tabular}
 \end{center}
