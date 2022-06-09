@@ -14,12 +14,12 @@ type Tri = (Point, Side)
 
 data LTree3 a = Tri a | Nodo (LTree3 a) (LTree3 a) (LTree3 a) deriving (Eq,Show)
 
-inLTree3 :: Either a ((LTree3 a) (LTree3 a) (LTree3 a)) -> LTree3 a
-inLTree3 = either Tri Nodo
+inLTree3 :: Either a ((LTree3 a, LTree3 a), LTree3 a) -> LTree3 a
+inLTree3 = either Tri ((uncurry . uncurry) Nodo)
 
-outLTree3 :: LTree3 a -> Either a (LTree3 a -> LTree3 a -> LTree3 a)
+outLTree3 :: LTree3 a -> Either a ((LTree3 a, LTree3 a), LTree3 a)
 outLTree3 (Tri a) = i1 a
-outLTree3 (Nodo a b c) = uncurry (i2 (a,b,c))
+outLTree3 (Nodo a b c) = i2 ((a,b),c)
 
 baseLTree3 f g = f -|- (g >< g) >< g
 

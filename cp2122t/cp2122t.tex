@@ -860,6 +860,14 @@ efeito:\footnote{Exemplos tirados de \cite{Ol18}.}
 \just\equiv{ identity }
 %
         \ensuremath{\begin{lcbr}\p1\mathrel{=}\Varid{f}\\\p2\mathrel{=}\Varid{g}\end{lcbr}}
+%
+\just\equiv{ def-x, def-comp, def-id, igualdade extensional }
+%
+    \ensuremath{\begin{lcbr}\Varid{alice}\comp \Conid{Leaf}\mathrel{=}\Varid{id}\\\Varid{alice}\comp \Conid{Fork}\mathrel{=}\uncurry{\Varid{max}}\comp (\Varid{bob}\times\Varid{bob})\end{lcbr}}
+%
+\just\equiv{ eq-+ }
+%
+    (either (alice . Leaf) (alice . Fork)) = (either (id) ((uncurry max) . (bob >< bob)) )
 \qed
 \end{eqnarray*}
 
@@ -1203,6 +1211,36 @@ Apresentar cálculos aqui, se desejável acompanhados de diagramas, etc.
 \>[B]{}\Varid{both}\;\Varid{t}\mathrel{=}(\Varid{alice}\;\Varid{t},\Varid{bob}\;\Varid{t}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
+
+\begin{eqnarray*}
+\start
+    \ensuremath{\begin{lcbr}\Varid{alice}\;(\Conid{Leaf}\;\Varid{x})\mathrel{=}\Varid{x}\\\Varid{alice}\;(\Conid{Fork}\;(\Varid{e},\Varid{d}))\mathrel{=}\Varid{max}\;(\Varid{bob}\;\Varid{e})\;(\Varid{bob}\;\Varid{d})\end{lcbr}}
+%
+\just\equiv{ uncurry }
+%
+    \ensuremath{\begin{lcbr}\Varid{alice}\;(\Conid{Leaf}\;\Varid{x})\mathrel{=}\Varid{x}\\\Varid{alice}\;(\Conid{Fork}\;(\Varid{e},\Varid{d}))\mathrel{=}\uncurry{\Varid{max}}\;(\Varid{bob}\;\Varid{e},\Varid{bob}\;\Varid{d})\end{lcbr}}
+%
+\just\equiv{ def-x, def-comp, def-id, igualdade extensional }
+%
+    \ensuremath{\begin{lcbr}\Varid{alice}\comp \Conid{Leaf}\mathrel{=}\Varid{id}\\\Varid{alice}\comp \Conid{Fork}\mathrel{=}\uncurry{\Varid{max}}\comp (\Varid{bob}\times\Varid{bob})\end{lcbr}}
+%
+\just\equiv{ eq-+ }
+%
+    \ensuremath{\alt{\Varid{alice}\comp \Conid{Leaf}}{\Varid{alice}\comp \Conid{Fork}}\mathrel{=}\alt{\Varid{id}}{\uncurry{\Varid{max}}\comp (\Varid{bob}\times\Varid{bob})}}
+%
+\just\equiv{ fusão-+ , cancelamento-x }
+%
+    \ensuremath{\Varid{alice}\comp \alt{\Conid{Leaf}}{\Conid{Fork}}\mathrel{=}\alt{\Varid{id}}{\uncurry{\Varid{max}}\comp (\p2\comp \conj{\Varid{alice}}{\Varid{bob}}\times\p2\comp \conj{\Varid{alice}}{\Varid{bob}})}}
+%
+\just\equiv{ functor-x , def-in }
+%
+    \ensuremath{\Varid{alice}\comp \mathbf{in}\mathrel{=}\alt{\Varid{id}}{\uncurry{\Varid{max}}\comp (\p2\times\p2)\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})}}
+%
+\just\equiv{ absorção-+ , natural-id }
+%
+    \ensuremath{\Varid{alice}\comp \mathbf{in}\mathrel{=}\alt{\Varid{id}}{\uncurry{\Varid{max}}\comp (\p2\times\p2)}\comp (\Varid{id}\mathbin{+}\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})}
+\end{eqnarray*}
+
 
 \subsection*{Problema 3}
 Biblioteca \ensuremath{\mathsf{LTree3}}:

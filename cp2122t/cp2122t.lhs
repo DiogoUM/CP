@@ -646,6 +646,18 @@ efeito:\footnote{Exemplos tirados de \cite{Ol18}.}
      )(
           p2 = g
      )|
+%
+\just\equiv{ def-x, def-comp, def-id, igualdade extensional }
+%
+    |lcbr(
+        alice . Leaf = id
+    )(
+        alice . Fork = (uncurry max) . (bob >< bob)
+    )|
+%
+\just\equiv{ eq-+ }
+%
+    (either (alice . Leaf) (alice . Fork)) = (either (id) ((uncurry max) . (bob >< bob)) )
 \qed
 \end{eqnarray*}
 
@@ -900,6 +912,48 @@ bob (Fork (e,d)) = min (alice e) (alice d)
 both :: Ord d => LTree d -> (d, d)
 both t = (alice t, bob t)
 \end{code}
+
+\begin{eqnarray*}
+\start
+    |lcbr(
+        alice (Leaf x) = x
+    )(
+        alice (Fork (e, d)) = max (bob e) (bob d)
+    )|
+%
+\just\equiv{ uncurry }
+%
+    |lcbr(
+            alice (Leaf x) = x
+        )(
+            alice (Fork (e, d)) = (uncurry max) (bob e, bob d)
+        )|
+%
+\just\equiv{ def-x, def-comp, def-id, igualdade extensional }
+%
+    |lcbr(
+        alice . Leaf = id
+    )(
+        alice . Fork = (uncurry max) . (bob >< bob)
+    )|
+%
+\just\equiv{ eq-+ }
+%
+    |(either (alice . Leaf) (alice . Fork)) = (either (id) ((uncurry max) . (bob >< bob)) )|
+%
+\just\equiv{ fusão-+ , cancelamento-x }
+%
+    |alice . (either (Leaf)(Fork)) = (either(id)((uncurry max) . (p2. (split(alice)(bob)) >< p2. (split (alice)(bob)))))|
+%
+\just\equiv{ functor-x , def-in }
+%
+    |alice . in = (either (id)((uncurry max) . (p2 >< p2) . ((split (alice) (bob)) >< (split (alice) (bob)))))|
+%
+\just\equiv{ absorção-+ , natural-id }
+%
+    |alice . in = (either (id)((uncurry max) . (p2 >< p2))) . (id + ( split (alice) (bob)) >< ( split (alice) (bob)))|
+\end{eqnarray*}
+
 
 \subsection*{Problema 3}
 Biblioteca |LTree3|:
