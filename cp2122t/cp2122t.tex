@@ -861,13 +861,6 @@ efeito:\footnote{Exemplos tirados de \cite{Ol18}.}
 %
         \ensuremath{\begin{lcbr}\p1\mathrel{=}\Varid{f}\\\p2\mathrel{=}\Varid{g}\end{lcbr}}
 %
-\just\equiv{ def-x, def-comp, def-id, igualdade extensional }
-%
-    \ensuremath{\begin{lcbr}\Varid{alice}\comp \Conid{Leaf}\mathrel{=}\Varid{id}\\\Varid{alice}\comp \Conid{Fork}\mathrel{=}\uncurry{\Varid{max}}\comp (\Varid{bob}\times\Varid{bob})\end{lcbr}}
-%
-\just\equiv{ eq-+ }
-%
-    (either (alice . Leaf) (alice . Fork)) = (either (id) ((uncurry max) . (bob >< bob)) )
 \qed
 \end{eqnarray*}
 
@@ -1247,24 +1240,22 @@ Biblioteca \ensuremath{\mathsf{LTree3}}:
 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
-\column{27}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}\Varid{inLTree3}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{inLTree3}\mathrel{=}\alt{\Conid{Tri}}{\uncurry{\uncurry{\Conid{Nodo}}}}{}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{outLTree3}\;(\Conid{Tri}\;\Varid{t})\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{outLTree3}\;(\Conid{Tri}\;\Varid{t})\mathrel{=}i_1\;\Varid{t}{}\<[E]%
 \\
-\>[B]{}\Varid{outLTree3}\;(\Conid{Nodo}\;\Varid{a}\;\Varid{b}\;\Varid{c})\mathrel{=}{}\<[27]%
-\>[27]{}\bot {}\<[E]%
+\>[B]{}\Varid{outLTree3}\;(\Conid{Nodo}\;\Varid{a}\;\Varid{b}\;\Varid{c})\mathrel{=}i_2\;((\Varid{a},\Varid{b}),\Varid{c}){}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{baseLTree3}\;\Varid{f}\;\Varid{g}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{baseLTree3}\;\Varid{f}\;\Varid{g}\mathrel{=}\Varid{f}+(\Varid{g}\times\Varid{g})\times\Varid{g}{}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{recLTree3}\;\Varid{f}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{recLTree3}\;\Varid{f}\mathrel{=}\Varid{id}+(\Varid{f}\times\Varid{f})\times\Varid{f}{}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{cataLTree3}\;\Varid{f}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{cataLTree3}\;\Varid{f}\mathrel{=}\Varid{f}\comp (\Varid{recLTree3}\;(\Varid{cataLTree3}\;\Varid{f}))\comp \Varid{outLTree3}{}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{anaLTree3}\;\Varid{f}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{anaLTree3}\;\Varid{f}\mathrel{=}\Varid{inLTree3}\comp (\Varid{recLTree3}\;(\Varid{anaLTree3}\;\Varid{f}))\comp \Varid{f}{}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{hyloLTree3}\;\Varid{f}\;\Varid{g}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{hyloLTree3}\;\Varid{f}\;\Varid{g}\mathrel{=}\Varid{cataLTree3}\;\Varid{f}\comp \Varid{anaLTree3}\;\Varid{g}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 Genes do hilomorfismo \ensuremath{\Varid{sierpinski}}:

@@ -647,17 +647,6 @@ efeito:\footnote{Exemplos tirados de \cite{Ol18}.}
           p2 = g
      )|
 %
-\just\equiv{ def-x, def-comp, def-id, igualdade extensional }
-%
-    |lcbr(
-        alice . Leaf = id
-    )(
-        alice . Fork = (uncurry max) . (bob >< bob)
-    )|
-%
-\just\equiv{ eq-+ }
-%
-    (either (alice . Leaf) (alice . Fork)) = (either (id) ((uncurry max) . (bob >< bob)) )
 \qed
 \end{eqnarray*}
 
@@ -959,20 +948,20 @@ both t = (alice t, bob t)
 Biblioteca |LTree3|:
 
 \begin{code}
-inLTree3 = undefined
+inLTree3 = either Tri (uncurry (uncurry Nodo))
 
-outLTree3 (Tri t) = undefined
-outLTree3 (Nodo a b c) =  undefined
+outLTree3 (Tri t) = i1 t
+outLTree3 (Nodo a b c) = i2 ((a,b),c)
 
-baseLTree3 f g = undefined
+baseLTree3 f g = f -|- (g >< g) >< g
 
-recLTree3 f = undefined
+recLTree3 f = id -|- (f >< f) >< f
 
-cataLTree3 f = undefined
+cataLTree3 f = f . (recLTree3 (cataLTree3 f)) . outLTree3
 
-anaLTree3 f = undefined
+anaLTree3 f = inLTree3 . (recLTree3 (anaLTree3 f)) . f
 
-hyloLTree3 f g = undefined
+hyloLTree3 f g = cataLTree3 f . anaLTree3 g
 \end{code}
 Genes do hilomorfismo |sierpinski|:
 \begin{code}
