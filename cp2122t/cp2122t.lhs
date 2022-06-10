@@ -1036,7 +1036,7 @@ Com o intuito do sistema não ficar muito longo e de difícil leitura, vamos mod
 %
 \just\equiv{ |k = (either (k1) (k2))| }
 %
-    |h = (either (const (0)) ((either (const (0)) ((succ) . p1 . p2)) . (== 0) . p2 . p2?)|
+    |k = (either (const (0)) ((either (const (0)) ((succ) . p1 . p2)) . (== 0) . p2 . p2?)|
 \end{eqnarray*}
 \item Equação nº3
 \begin{eqnarray*}
