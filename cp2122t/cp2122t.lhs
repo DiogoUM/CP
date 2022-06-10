@@ -885,9 +885,214 @@ simples e elegantes.
 
 \subsection*{Problema 1} \label{pg:P1}
 
-Apresentar cálculos aqui, se desejável acompanhados de diagramas, etc.
+A lei de recurssividade mútua nesse exercício foi a seguinte:
+
+\begin{eqnarray*}
+\start%plroblema com os sistemas, uma vez que o lcbr so recebe 2 argumentos e não existe nenhum análogo que receba 3
+    |lcbr(
+        f . in = h . F (split (f) (split (g) (j)))
+    )(
+        g . in = k . F (split (f) (split (g) (j)))
+    )
+        j . in = l . F (split (f) (split (g) (j)))
+    |
+%
+\just\equiv
+%
+    |F (split (f) (split (g) (j))) = (cata (split (h) (split (k) (l))))|
+\end{eqnarray*}
+De forma a mostrar a igualdade pedida, primeiro vamos ter de definir as funções h, k e l.
+
+Para tal fazemos o seguinte:
+\begin{eqnarray*}
+\start
+    |(split (q d) (split (r d) (c d))) = (cata (split (h) (split (k) (l))))|
+%
+\just\equiv{ lei da recursividade mútua (3 funções)}
+%
+    |lcbr(
+        (q d) . in = h . F (split (q d) (split (r d) (c d)))
+    )(
+        (r d) . in = k . F (split (q d) (split (r d) (c d)))
+    )
+        (c d) . in = l . F (split (q d) (split (r d) (c d)))
+    |
+%
+\just\equiv{ def-in , |F f = id + f| }
+%
+    |lcbr(
+        (q d) . (either (const (0)) ((succ))) = h . (id + split (q d) (split (r d) (c d)))
+    )(
+        (r d) . (either (const (0)) ((succ))) = k . (id + split (q d) (split (r d) (c d)))
+    )
+        (c d) . (either (const (0)) ((succ))) = l . (id + split (q d) (split (r d) (c d)))
+    |
+%
+\just\equiv{ fusão-+ , absorção-+ , |h = (either (h1) (h2)) , k = (either (k1) (k2)) , l = (either (l1) (l2))| }
+%
+    |lcbr(
+        (either ((q d) . const (0)) ((q d) . (succ))) = (either (h1) (h2 . split (q d) (split (r d) (c d))))
+    )(
+        (either ((r d) . const (0)) ((r d) . (succ))) = (either (k1) (k2 . split (q d) (split (r d) (c d))))
+    )
+        (either ((c d) . const (0)) ((c d) . (succ))) = (either (l1) (l2 . split (q d) (split (r d) (c d))))
+    |
+\end{eqnarray*}
+Com o intuito do sistema não ficar muito longo e de difícil leitura, vamos modificar as equações de modo individual.
+\begin{itemize}
+\item Equação nº1
+\begin{eqnarray*}
+\start
+    |(either ((q d) . const (0)) ((q d) . (succ))) = (either (h1) (h2 . split (q d) (split (r d) (c d))))|
+%
+\just\equiv{ Eq-+ }
+%
+    |lcbr(
+        (q d) . const (0) = h1
+    )(
+        (q d) . (succ) = h2 . (split (q d) (split (r d) (c d)))
+    )|
+%
+\just\equiv{ igualdade extensional , def-comp , def-split , def-succ}
+%
+    |lcbr(
+        q d 0 = h1 n
+    )(
+        q d (n+1) = h2 (q d n, (r d n, c d n))
+    )|
+%
+\just\equiv{ def-(q d) , 1.ª lei de fusão do condicional , igualdade extensional }
+%
+    |lcbr(
+        h1 = const (0)
+    )(
+        h2 (a, (b, c)) = if c == 0 then a+1 else a
+    )|
+%
+\just\equiv{ igualdade extensional , def-cond }
+%
+    |lcbr(
+        h1 = const (0)
+    )(
+        h2 = (== 0) . p2 . p2 -> (succ) . p1, p1
+    )|
+%
+\just\equiv{ def condicional de McCarthy }
+%
+    |lcbr(
+        h1 = const (0)
+    )(
+        h2 = (either ((succ) . p1) (p1)) . (== 0) . p2 . p2?
+    )|
+%
+\just\equiv{ |h = (either (h1) (h2))| }
+%
+    |h = (either (const (0)) ((either ((succ) . p1) (p1)) . (== 0) . p2 . p2?))|
+\end{eqnarray*}
+\item Equação nº2
+\begin{eqnarray*}
+\start
+    |(either ((r d) . const (0)) ((r d) . (succ))) = (either (k1) (k2 . split (q d) (split (r d) (c d))))|
+%
+\just\equiv{ Eq-+ }
+%
+    |lcbr(
+        (r d) . const (0) = k1
+    )(
+        (r d) . (succ) = k2 . (split (q d) (split (r d) (c d)))
+    )|
+%
+\just\equiv{ igualdade extensional , def-comp , def-split , def-succ}
+%
+    |lcbr(
+        r d 0 = k1 n
+    )(
+        r d (n+1) = k2 (q d n, (r d n, c d n))
+    )|
+%
+\just\equiv{ def-(r d) , igualdade extensional }
+%
+    |lcbr(
+        k1 = const (0)
+    )(
+        k2 (a, (b, c)) = if c == 0 then 0 else 1+b
+    )|
+%
+\just\equiv{ igualdade extensional , def-cond , def-const }
+%
+    |lcbr(
+        k1 = const (0)
+    )(
+        k2 = (== 0) . p2 . p2 -> const (0), (succ) . p1 . p2
+    )|
+%
+\just\equiv{ def condicional de McCarthy }
+%
+    |lcbr(
+        k1 = const (0)
+    )(
+        k2 = (either (const (0)) ((succ) . p1 . p2)) . (== 0) . p2 . p2?
+    )|
+%
+\just\equiv{ |k = (either (k1) (k2))| }
+%
+    |h = (either (const (0)) ((either (const (0)) ((succ) . p1 . p2)) . (== 0) . p2 . p2?)|
+\end{eqnarray*}
+\item Equação nº3
+\begin{eqnarray*}
+\start
+    |(either ((c d) . const (0)) ((c d) . (succ))) = (either (l1) (l2 . split (q d) (split (r d) (c d))))|
+%
+\just\equiv{ Eq-+ }
+%
+    |lcbr(
+        (c d) . const (0) = l1
+    )(
+        (c d) . (succ) = l2 . (split (q d) (split (r d) (c d)))
+    )|
+%
+\just\equiv{ igualdade extensional , def-comp , def-split , def-succ}
+%
+    |lcbr(
+        c d 0 = l1 n
+    )(
+        c d (n+1) = l2 (q d n, (r d n, c d n))
+    )|
+%
+\just\equiv{ def-(c d) , igualdade extensional }
+%
+    |lcbr(
+        l1 = const (d)
+    )(
+        l2 (a, (b, c)) = if c == 0 then d else c-1
+    )|
+%
+\just\equiv{ igualdade extensional , def-cond }
+%
+    |lcbr(
+        l1 = const (d)
+    )(
+        l2 = (== 0) . p2 . p2 -> const (d), (-1) . p2 . p2
+    )|
+%
+\just\equiv{ def condicional de McCarthy }
+%
+    |lcbr(
+        l1 = const (d)
+    )(
+        l2 = (either (const (d)) ((-1) . p2 . p2)) . (== 0) . p2 . p2?
+    )|
+%
+\just\equiv{ |l = (either (l1) (l2))| }
+%
+    |l = (either (const (d)) ((either (const (d)) ((-1) . p2 . p2)) . (== 0) . p2 . p2?))|
+\end{eqnarray*}
+\end{itemize}
+Como já definimos |h|, |k| e |l| podemos, a partir da lei de recursividade mútua, concluir o seguinte:
 
 \subsection*{Problema 2}
+
+
 
 \begin{code}
 alice :: Ord c => LTree c -> c

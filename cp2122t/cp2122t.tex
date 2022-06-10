@@ -1180,7 +1180,126 @@ simples e elegantes.
 
 \subsection*{Problema 1} \label{pg:P1}
 
-Apresentar cálculos aqui, se desejável acompanhados de diagramas, etc.
+A lei de recurssividade mútua nesse exercício foi a seguinte:
+
+\begin{eqnarray*}
+\start%plroblema com os sistemas, uma vez que o lcbr so recebe 2 argumentos e não existe nenhum análogo que receba 3
+    \ensuremath{\begin{lcbr}\Varid{f}\comp \mathbf{in}\mathrel{=}\Varid{h}\comp \Conid{F}\;\conj{\Varid{f}}{\conj{\Varid{g}}{\Varid{j}}}\\\Varid{g}\comp \mathbf{in}\mathrel{=}\Varid{k}\comp \Conid{F}\;\conj{\Varid{f}}{\conj{\Varid{g}}{\Varid{j}}}\end{lcbr}\;\Varid{j}\comp \mathbf{in}\mathrel{=}\Varid{l}\comp \Conid{F}\;\conj{\Varid{f}}{\conj{\Varid{g}}{\Varid{j}}}}
+%
+\just\equiv
+%
+    \ensuremath{\Conid{F}\;\conj{\Varid{f}}{\conj{\Varid{g}}{\Varid{j}}}\mathrel{=}\cata{\conj{\Varid{h}}{\conj{\Varid{k}}{\Varid{l}}}}}
+\end{eqnarray*}
+De forma a mostrar a igualdade pedida, primeiro vamos ter de definir as funções h, k e l.
+
+Para tal fazemos o seguinte:
+\begin{eqnarray*}
+\start
+    \ensuremath{\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\mathrel{=}\cata{\conj{\Varid{h}}{\conj{\Varid{k}}{\Varid{l}}}}}
+%
+\just\equiv{ lei da recursividade mútua (3 funções)}
+%
+    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\Varid{h}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\(\Varid{r}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\Varid{k}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}\;(\Varid{c}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\Varid{l}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}
+%
+\just\equiv{ def-in , \ensuremath{\Conid{F}\;\Varid{f}\mathrel{=}\Varid{id}\mathbin{+}\Varid{f}} }
+%
+    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{(\succ )}\mathrel{=}\Varid{h}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\\(\Varid{r}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{(\succ )}\mathrel{=}\Varid{k}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}\;(\Varid{c}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{(\succ )}\mathrel{=}\Varid{l}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})}
+%
+\just\equiv{ fusão-+ , absorção-+ , \ensuremath{\Varid{h}\mathrel{=}\alt{h_1 }{h_2 },\Varid{k}\mathrel{=}\alt{k_1 }{k_2 },\Varid{l}\mathrel{=}\alt{l_1 }{l_2 }} }
+%
+    \ensuremath{\begin{lcbr}\alt{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{q}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{h_1 }{h_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}\\\alt{(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{r}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{k_1 }{k_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}\end{lcbr}\;\alt{(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{c}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{l_1 }{l_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}}
+\end{eqnarray*}
+Com o intuito do sistema não ficar muito longo e de difícil leitura, vamos modificar as equações de modo individual.
+\begin{itemize}
+\item Equação nº1
+\begin{eqnarray*}
+\start
+    \ensuremath{\alt{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{q}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{h_1 }{h_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}}
+%
+\just\equiv{ Eq-+ }
+%
+    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}h_1 \\(\Varid{q}\;\Varid{d})\comp (\succ )\mathrel{=}h_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
+%
+\just\equiv{ igualdade extensional , def-comp , def-split , def-succ}
+%
+    \ensuremath{\begin{lcbr}\Varid{q}\;\Varid{d}\;\mathrm{0}\mathrel{=}h_1 \;\Varid{n}\\\Varid{q}\;\Varid{d}\;(\Varid{n}\mathbin{+}\mathrm{1})\mathrel{=}h_2 \;(\Varid{q}\;\Varid{d}\;\Varid{n},(\Varid{r}\;\Varid{d}\;\Varid{n},\Varid{c}\;\Varid{d}\;\Varid{n}))\end{lcbr}}
+%
+\just\equiv{ def-(q d) , 1.ª lei de fusão do condicional , igualdade extensional }
+%
+    \ensuremath{\begin{lcbr}h_1 \mathrel{=}\underline{\mathrm{0}}\\h_2 \;(\Varid{a},(\Varid{b},\Varid{c}))\mathrel{=}\mathbf{if}\;\Varid{c}\equiv \mathrm{0}\;\mathbf{then}\;\Varid{a}\mathbin{+}\mathrm{1}\;\mathbf{else}\;\Varid{a}\end{lcbr}}
+%
+\just\equiv{ igualdade extensional , def-cond }
+%
+    \ensuremath{\begin{lcbr}h_1 \mathrel{=}\underline{\mathrm{0}}\\h_2 \mathrel{=}(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1\end{lcbr}}
+%
+\just\equiv{ def condicional de McCarthy }
+%
+    \ensuremath{\begin{lcbr}h_1 \mathrel{=}\underline{\mathrm{0}}\\h_2 \mathrel{=}\alt{(\succ )\comp \p1}{\p1}\comp (\equiv \mathrm{0})\comp \p2\comp \p2\mathbin{?}\end{lcbr}}
+%
+\just\equiv{ \ensuremath{\Varid{h}\mathrel{=}\alt{h_1 }{h_2 }} }
+%
+    \ensuremath{\Varid{h}\mathrel{=}\alt{\underline{\mathrm{0}}}{\alt{(\succ )\comp \p1}{\p1}\comp (\equiv \mathrm{0})\comp \p2\comp \p2\mathbin{?}}}
+\end{eqnarray*}
+\item Equação nº2
+\begin{eqnarray*}
+\start
+    \ensuremath{\alt{(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{r}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{k_1 }{k_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}}
+%
+\just\equiv{ Eq-+ }
+%
+    \ensuremath{\begin{lcbr}(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}k_1 \\(\Varid{r}\;\Varid{d})\comp (\succ )\mathrel{=}k_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
+%
+\just\equiv{ igualdade extensional , def-comp , def-split , def-succ}
+%
+    \ensuremath{\begin{lcbr}\Varid{r}\;\Varid{d}\;\mathrm{0}\mathrel{=}k_1 \;\Varid{n}\\\Varid{r}\;\Varid{d}\;(\Varid{n}\mathbin{+}\mathrm{1})\mathrel{=}k_2 \;(\Varid{q}\;\Varid{d}\;\Varid{n},(\Varid{r}\;\Varid{d}\;\Varid{n},\Varid{c}\;\Varid{d}\;\Varid{n}))\end{lcbr}}
+%
+\just\equiv{ def-(r d) , igualdade extensional }
+%
+    \ensuremath{\begin{lcbr}k_1 \mathrel{=}\underline{\mathrm{0}}\\k_2 \;(\Varid{a},(\Varid{b},\Varid{c}))\mathrel{=}\mathbf{if}\;\Varid{c}\equiv \mathrm{0}\;\mathbf{then}\;\mathrm{0}\;\mathbf{else}\;\mathrm{1}\mathbin{+}\Varid{b}\end{lcbr}}
+%
+\just\equiv{ igualdade extensional , def-cond , def-const }
+%
+    \ensuremath{\begin{lcbr}k_1 \mathrel{=}\underline{\mathrm{0}}\\k_2 \mathrel{=}(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2\end{lcbr}}
+%
+\just\equiv{ def condicional de McCarthy }
+%
+    \ensuremath{\begin{lcbr}k_1 \mathrel{=}\underline{\mathrm{0}}\\k_2 \mathrel{=}\alt{\underline{\mathrm{0}}}{(\succ )\comp \p1\comp \p2}\comp (\equiv \mathrm{0})\comp \p2\comp \p2\mathbin{?}\end{lcbr}}
+%
+\just\equiv{ \ensuremath{\Varid{k}\mathrel{=}\alt{k_1 }{k_2 }} }
+%
+    \ensuremath{\Varid{h}\mathrel{=}\alt{\underline{\mathrm{0}}}{\alt{\underline{\mathrm{0}}}{(\succ )\comp \p1\comp \p2}\comp (\equiv \mathrm{0})\comp \p2\comp \p2\mathbin{?}}}
+\end{eqnarray*}
+\item Equação nº3
+\begin{eqnarray*}
+\start
+    \ensuremath{\alt{(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{c}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{l_1 }{l_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}}
+%
+\just\equiv{ Eq-+ }
+%
+    \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}l_1 \\(\Varid{c}\;\Varid{d})\comp (\succ )\mathrel{=}l_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
+%
+\just\equiv{ igualdade extensional , def-comp , def-split , def-succ}
+%
+    \ensuremath{\begin{lcbr}\Varid{c}\;\Varid{d}\;\mathrm{0}\mathrel{=}l_1 \;\Varid{n}\\\Varid{c}\;\Varid{d}\;(\Varid{n}\mathbin{+}\mathrm{1})\mathrel{=}l_2 \;(\Varid{q}\;\Varid{d}\;\Varid{n},(\Varid{r}\;\Varid{d}\;\Varid{n},\Varid{c}\;\Varid{d}\;\Varid{n}))\end{lcbr}}
+%
+\just\equiv{ def-(c d) , igualdade extensional }
+%
+    \ensuremath{\begin{lcbr}l_1 \mathrel{=}\underline{\Varid{d}}\\l_2 \;(\Varid{a},(\Varid{b},\Varid{c}))\mathrel{=}\mathbf{if}\;\Varid{c}\equiv \mathrm{0}\;\mathbf{then}\;\Varid{d}\;\mathbf{else}\;\Varid{c}\mathbin{-}\mathrm{1}\end{lcbr}}
+%
+\just\equiv{ igualdade extensional , def-cond }
+%
+    \ensuremath{\begin{lcbr}l_1 \mathrel{=}\underline{\Varid{d}}\\l_2 \mathrel{=}(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2\end{lcbr}}
+%
+\just\equiv{ def condicional de McCarthy }
+%
+    \ensuremath{\begin{lcbr}l_1 \mathrel{=}\underline{\Varid{d}}\\l_2 \mathrel{=}\alt{\underline{\Varid{d}}}{(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}\comp (\equiv \mathrm{0})\comp \p2\comp \p2\mathbin{?}\end{lcbr}}
+%
+\just\equiv{ \ensuremath{\Varid{l}\mathrel{=}\alt{l_1 }{l_2 }} }
+%
+    \ensuremath{\Varid{l}\mathrel{=}\alt{\underline{\Varid{d}}}{\alt{\underline{\Varid{d}}}{(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}\comp (\equiv \mathrm{0})\comp \p2\comp \p2\mathbin{?}}}
+\end{eqnarray*}
+\end{itemize}
+Como já definimos \ensuremath{\Varid{h}}, \ensuremath{\Varid{k}} e \ensuremath{\Varid{l}} podemos, a partir da lei de recursividade mútua, concluir o seguinte:
 
 \subsection*{Problema 2}
 
