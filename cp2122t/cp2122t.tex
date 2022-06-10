@@ -1303,6 +1303,12 @@ Como já definimos \ensuremath{\Varid{h}}, \ensuremath{\Varid{k}} e \ensuremath{
 
 \subsection*{Problema 2}
 
+Este foi um desafio, considerado por nós, muito interessante de desenvolver, tanto em código como o próprio processo evolutivo do pensamento envolvido para toda a resolução e estruturação do problema.
+
+Para resolver este desafio a ideia "imediata" que nos surgiu foi, uma vez que os objetivos de cada um são conhecidos por ambos e além disso existe uma ordem definida para as jogadas, então é possível que cada um consiga prever as jogada do outro. Ou seja, já que a Alice e o Bob jogam à vez, esta visão transmitiu-nos logo a ideia de recursividade mútua, onde a Alice prevê as jogadas do Bob e vice-versa.
+
+Para este efeito codificamos a fução \emph{alice} 
+
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
@@ -1355,6 +1361,19 @@ Como já definimos \ensuremath{\Varid{h}}, \ensuremath{\Varid{k}} e \ensuremath{
 
 
 \subsection*{Problema 3}
+%diagrama extra dos tipos
+\begin{eqnarray*}
+\xymatrix@C=2cm{
+    \ensuremath{(\Conid{Tri}\mathbin{*}\times\Conid{Tri}\mathbin{*})\times\Conid{Tri}\mathbin{*}}
+           \ar[d]^-{\ensuremath{\uncurry{(\mathbin{+\!\!\!+})}\times\Varid{id}}}
+\\
+    \ensuremath{\Conid{Tri}\mathbin{*}\times\Conid{Tri}\mathbin{*}}
+           \ar[d]^{\ensuremath{\uncurry{(\mathbin{+\!\!\!+})}}}
+\\
+    \ensuremath{\Conid{Tri}\mathbin{*}}
+}
+\end{eqnarray*}
+
 Biblioteca \ensuremath{\mathsf{LTree3}}:
 
 \begin{hscode}\SaveRestoreHook
@@ -1378,6 +1397,25 @@ Biblioteca \ensuremath{\mathsf{LTree3}}:
 \ColumnHook
 \end{hscode}\resethooks
 Genes do hilomorfismo \ensuremath{\Varid{sierpinski}}:
+\\
+\\
+Diagrama do Catamorfismo:
+\begin{eqnarray*}
+\xymatrix@C=3cm@R=1.7cm{
+    \ensuremath{\mathsf{LTree3}\;\Conid{Tri}}
+           \ar[d]_-{\ensuremath{\Varid{folhasSierp}}}
+           \ar@/_2pc/[r]_-{\ensuremath{\Varid{out}}}
+&
+    \ensuremath{\Conid{Tri}\mathbin{+}((\mathsf{LTree3}\;\Conid{Tri}\times\mathsf{LTree3}\;\Conid{Tri})\times\mathsf{LTree3}\;\Conid{Tri})}
+           \ar[d]^{\ensuremath{\Varid{id}\mathbin{+}((\Varid{folhasSierp}\times\Varid{folhasSierp})\times\Varid{folhasSierp})}}
+           \ar@/_2pc/[l]_-{\ensuremath{\mathbf{in}}}
+\\
+     \ensuremath{\Conid{Tri}\mathbin{*}}
+&
+     \ensuremath{\Conid{Tri}\mathbin{+}((\Conid{Tri}\mathbin{*}\times\Conid{Tri}\mathbin{*})\times\Conid{Tri}\mathbin{*})}
+           \ar[l]^-{\ensuremath{g_1 }}
+}
+\end{eqnarray*}
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{6}{@{}>{\hspre}l<{\hspost}@{}}%

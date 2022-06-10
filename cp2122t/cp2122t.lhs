@@ -1092,7 +1092,11 @@ Como já definimos |h|, |k| e |l| podemos, a partir da lei de recursividade mút
 
 \subsection*{Problema 2}
 
+Este foi um desafio, considerado por nós, muito interessante de desenvolver, tanto em código como o próprio processo evolutivo do pensamento envolvido para toda a resolução e estruturação do problema.
 
+Para resolver este desafio a ideia "imediata" que nos surgiu foi, uma vez que os objetivos de cada um são conhecidos por ambos e além disso existe uma ordem definida para as jogadas, então é possível que cada um consiga prever as jogada do outro. Ou seja, já que a Alice e o Bob jogam à vez, esta visão transmitiu-nos logo a ideia de recursividade mútua, onde a Alice prevê as jogadas do Bob e vice-versa.
+
+Para este efeito codificamos a fução \emph{alice} 
 
 \begin{code}
 alice :: Ord c => LTree c -> c
@@ -1150,6 +1154,19 @@ both t = (alice t, bob t)
 
 
 \subsection*{Problema 3}
+%diagrama extra dos tipos
+\begin{eqnarray*}
+\xymatrix@@C=2cm{
+    |(Tri* >< Tri*) >< Tri*|
+           \ar[d]^-{|uncurry (++) >< id|}
+\\
+    |Tri* >< Tri*|
+           \ar[d]^{|uncurry (++)|}
+\\
+    |Tri*|
+}
+\end{eqnarray*}
+
 Biblioteca |LTree3|:
 
 \begin{code}
@@ -1169,6 +1186,25 @@ anaLTree3 f = inLTree3 . (recLTree3 (anaLTree3 f)) . f
 hyloLTree3 f g = cataLTree3 f . anaLTree3 g
 \end{code}
 Genes do hilomorfismo |sierpinski|:
+\\
+\\
+Diagrama do Catamorfismo:
+\begin{eqnarray*}
+\xymatrix@@C=3cm@@R=1.7cm{
+    |LTree3 Tri|
+           \ar[d]_-{|folhasSierp|}
+           \ar@@/_2pc/[r]_-{|out|}
+&
+    |Tri + ((LTree3 Tri >< LTree3 Tri) >< LTree3 Tri)|
+           \ar[d]^{|id + ((folhasSierp >< folhasSierp) >< folhasSierp)|}
+           \ar@@/_2pc/[l]_-{|in|}
+\\
+     |Tri*|
+&
+     |Tri + ((Tri* >< Tri*) >< Tri*)|
+           \ar[l]^-{|g1|}
+}
+\end{eqnarray*}
 \begin{code}
 g1 = undefined
 
