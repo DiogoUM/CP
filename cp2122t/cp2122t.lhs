@@ -885,6 +885,11 @@ simples e elegantes.
 
 \subsection*{Problema 1} \label{pg:P1}
 
+No problema 1 queremos mostrar a igualdade entre aux d e loop d. Para o efeito 
+vamos necessitar da seguinte lei de recursividade mútua generalizada a 3 funções,
+obtida e mostrada no exercício 2 da ficha número 8 desta UC.
+\\
+\\
 A lei de recurssividade mútua nesse exercício foi a seguinte:
 
 \begin{eqnarray*}
@@ -897,7 +902,7 @@ A lei de recurssividade mútua nesse exercício foi a seguinte:
         j . in = l . F (split (f) (split (g) (j)))
     |
 %
-\just\equiv
+\equiv
 %
     |F (split (f) (split (g) (j))) = (cata (split (h) (split (k) (l))))|
 \end{eqnarray*}
@@ -1093,10 +1098,12 @@ Como já definimos |h|, |k| e |l| podemos, a partir da lei de recursividade mút
 \subsection*{Problema 2}
 
 Este foi um desafio, considerado por nós, muito interessante de desenvolver, tanto em código como o próprio processo evolutivo do pensamento envolvido para toda a resolução e estruturação do problema.
-
+\\
+\\
 Para resolver este desafio a ideia "imediata" que nos surgiu foi, uma vez que os objetivos de cada um são conhecidos por ambos e além disso existe uma ordem definida para as jogadas, então é possível que cada um consiga prever as jogada do outro. Ou seja, já que a Alice e o Bob jogam à vez, esta visão transmitiu-nos logo a ideia de recursividade mútua, onde a Alice prevê as jogadas do Bob e vice-versa.
-
-Para este efeito codificamos a fução \emph{alice} 
+\\
+\\
+Para este efeito codificamos a função \emph{alice} de modo a obter o número máximo de pedras preciosas de entre as possíveis escolhas posteriores de Bob, sendo o seu objetivo oposto ao de Alice, ou seja, o de obter o número mínimo de pedras preciosas. Com o mesmo raciocínio definimos \emph{bob} que vai adquirir o mínimo de pedras preciosas de entre as diversas escolhas que a Alice poderá vir a tomar. \emph{both} foi definida de modo a ser possível observar os diferentes resultados obtidos por ambas as partes aquando do jogo ser inicializado por Alice ou por Bob.
 
 \begin{code}
 alice :: Ord c => LTree c -> c
