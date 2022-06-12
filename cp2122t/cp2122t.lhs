@@ -1389,9 +1389,9 @@ g1 = either singl ((uncurry (++)) . ((uncurry (++)) >< id))
 
 g2 (t,0) = i1 t
 g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
-     t1 = split (split ((uncurry (++)) . (p1 >< (/2))) (p2 . p1)) ((/2) . p2)
-     t2 = split (split (p1 . p1) ((uncurry (++)) . (p2 >< (/2)))) ((/2) . p2)
-     t3 = (id >< id) >< (/2)
+     t1 = split (split ((uncurry (++)) . (p1 >< (/2))) (p2 . p1)) ((/2) . p2) >< (pred)
+     t2 = split (split (p1 . p1) ((uncurry (++)) . (p2 >< (/2)))) ((/2) . p2) >< (pred)
+     t3 = ((id >< id) >< (/2)) >< (pred)
 \end{code}
 
 \subsection*{Problema 4}
