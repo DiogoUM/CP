@@ -885,12 +885,11 @@ simples e elegantes.
 
 \subsection*{Problema 1} \label{pg:P1}
 
-No problema 1 queremos mostrar a igualdade entre aux d e loop d. Para o efeito 
-vamos necessitar da seguinte lei de recursividade mútua generalizada a 3 funções,
+No problema 1 quer-se mostrar a igualdade entre (aux d) e (loop d). Para o efeito será necessária a lei de recursividade mútua generalizada a 3 funções,
 obtida e mostrada no exercício 2 da ficha número 8 desta UC.
 \\
 \\
-A lei de recurssividade mútua nesse exercício foi a seguinte:
+A referida lei de recurssividade mútua foi a seguinte:
 
 \begin{eqnarray*}
 \start%plroblema com os sistemas, uma vez que o lcbr so recebe 2 argumentos e não existe nenhum análogo que receba 3
@@ -906,9 +905,9 @@ A lei de recurssividade mútua nesse exercício foi a seguinte:
 %
     |F (split (f) (split (g) (j))) = (cata (split (h) (split (k) (l))))|
 \end{eqnarray*}
-De forma a mostrar a igualdade pedida, primeiro vamos ter de definir as funções h, k e l.
+De forma a mostrar a igualdade pedida, primeiro ter-se-á de definir as funções h, k e l.
 
-Para tal fazemos o seguinte:
+Para tal calcula-se o seguinte:
 \begin{eqnarray*}
 \start
     |(split (q d) (split (r d) (c d))) = (cata (split (h) (split (k) (l))))|
@@ -943,7 +942,8 @@ Para tal fazemos o seguinte:
         (either ((c d) . const (0)) ((c d) . (succ))) = (either (l1) (l2 . split (q d) (split (r d) (c d))))
     |
 \end{eqnarray*}
-Com o intuito do sistema não ficar muito longo e de difícil leitura, vamos modificar as equações de modo individual.
+Com o intuito do sistema não ficar muito extenso e de difícil leitura, 
+modifica-se as equações de modo individual.
 \begin{itemize}
 \item Equação nº1
 \begin{eqnarray*}
@@ -982,17 +982,9 @@ Com o intuito do sistema não ficar muito longo e de difícil leitura, vamos mod
         h2 = (== 0) . p2 . p2 -> (succ) . p1, p1
     )|
 %
-\just\equiv{ def condicional de McCarthy }
-%
-    |lcbr(
-        h1 = const (0)
-    )(
-        h2 = (either ((succ) . p1) (p1)) . (== 0) . p2 . p2?
-    )|
-%
 \just\equiv{ |h = (either (h1) (h2))| }
 %
-    |h = (either (const (0)) ((either ((succ) . p1) (p1)) . (== 0) . p2 . p2?))|
+    |h = (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1)|
 \end{eqnarray*}
 \item Equação nº2
 \begin{eqnarray*}
@@ -1031,17 +1023,9 @@ Com o intuito do sistema não ficar muito longo e de difícil leitura, vamos mod
         k2 = (== 0) . p2 . p2 -> const (0), (succ) . p1 . p2
     )|
 %
-\just\equiv{ def condicional de McCarthy }
-%
-    |lcbr(
-        k1 = const (0)
-    )(
-        k2 = (either (const (0)) ((succ) . p1 . p2)) . (== 0) . p2 . p2?
-    )|
-%
 \just\equiv{ |k = (either (k1) (k2))| }
 %
-    |k = (either (const (0)) ((either (const (0)) ((succ) . p1 . p2)) . (== 0) . p2 . p2?)|
+    |k = (either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2)|
 \end{eqnarray*}
 \item Equação nº3
 \begin{eqnarray*}
@@ -1080,30 +1064,85 @@ Com o intuito do sistema não ficar muito longo e de difícil leitura, vamos mod
         l2 = (== 0) . p2 . p2 -> const (d), (-1) . p2 . p2
     )|
 %
-\just\equiv{ def condicional de McCarthy }
-%
-    |lcbr(
-        l1 = const (d)
-    )(
-        l2 = (either (const (d)) ((-1) . p2 . p2)) . (== 0) . p2 . p2?
-    )|
-%
 \just\equiv{ |l = (either (l1) (l2))| }
 %
-    |l = (either (const (d)) ((either (const (d)) ((-1) . p2 . p2)) . (== 0) . p2 . p2?))|
+    |l = (either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2)|
 \end{eqnarray*}
 \end{itemize}
-Como já definimos |h|, |k| e |l| podemos, a partir da lei de recursividade mútua, concluir o seguinte:
-
+Como já definimos |h|, |k| e |l| temos o seguinte:
+\begin{eqnarray*}
+\start
+    |lcbr(
+        (q d) . in = (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1) . F (split (q d) (split (r d) (c d)))
+    )(
+        (r d) . in = (either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2) . F (split (q d) (split (r d) (c d)))
+    ))
+        (c d) . in = (either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2) . F (split (q d) (split (r d) (c d)))
+    |
+%
+\just\equiv{ fokkinga }
+%
+    |split ((q d)) (split ((r d)) ((c d))) = (cata (split (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1)) (split(either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2)) ((either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2)) ) )|
+%
+\just\equiv{ lei da troca }
+%
+    |split ((q d)) (split ((r d)) ((c d))) = (cata (split (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1)) (either (split (const (0)) (const (d))) (split ((==0) . p2 . p2 -> (succ) . p1, p1) ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2))))|
+%
+\just\equiv{ lei da troca }
+%
+    |split ((q d)) (split ((r d)) ((c d))) = (cata (either (split (const (0)) (split (const (0)) (const (d)))) (split ((==0) . p1 . p1 -> (succ) . p1, +1) (split ((==0) . p2 . p2 -> const (0), (succ . p1 . p2)) ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2) ) )))|
+%
+\just\equiv{ igualdade extensional, def-split, def-const}
+%
+    |split ((q d)) (split ((r d)) ((c d))) = (cata (either (const ((0,(0,d)))) (split ((==0) . p1 . p1 -> (succ) . p1, +1) (split ((==0) . p2 . p2 -> const (0), (succ . p1 . p2)) ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2) ) ) ))|
+%
+\just\equiv{ def for }
+%
+    |split ((q d)) (split ((r d)) ((c d))) = for (split ((==0) . p1 . p1 -> (succ) . p1, +1) (split ((==0) . p2 . p2 -> const (0), (succ . p1 . p2)) ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2) ) ) ((0,(0,d)))|
+\end{eqnarray*}
+Prova-se, agora, a igualdade entre (g d) e o split que se encontra no ciclo for obtido.
+\begin{eqnarray*}
+\start
+    |(g d) = (split ((==0) . p1 . p1 -> (succ) . p1, +1) (split ((==0) . p2 . p2 -> const (0), (succ . p1 . p2)) ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2) ) )|
+%
+\just\equiv{ igualdade extensional, def-split }
+%
+    |g d (q,(r,c)) = (((==0) . p2 . p2 -> (succ) . p1, p1) (q,(r,c)), (((==0) . p2 . p2 -> const (0), (succ) . p1 . p2) (q,(r,c)), ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2)))|
+%
+\just\equiv{ def |p -> f,g| }
+%
+    |lcbr(
+        g d (q,(r,c)) = (==0) . p2 . p2 (q,(r,c)) ==> ((succ) . p1 (q,(r,c)), const (0) (q,(r,c)), const (d) (q,(r,c)))
+    )(
+        g d (q,(r,c)) = not (==0) . p2 . p2 (q,(r,c)) ==> (p1 (q,(r,c)), (succ) . p1 . p2 (q,(r,c)), (-1) . p2 . p2 (q,(r,c))) 
+    )|
+%
+\just\equiv{ def succ, def-const, def-proj }
+%
+    |lcbr(
+       g d (q,(r,c)) = (==0) c ==> (q+1,(0,d))
+    )(
+        g d (q,(r,c)) = not (==0) c ==> (q,(r+1, c-1))
+    )|
+%
+\equiv
+%
+    |lcbr(
+        g d (q,(r,0)) = (q+1,(0,d))
+    )(
+        g d (q,(r,c+1)) = (q,(r+1,c))
+    )|
+\end{eqnarray*}
+Assim, pode-se concluir que (aux d) é igual a (loop d).
 \subsection*{Problema 2}
 
-Este foi um desafio, considerado por nós, muito interessante de desenvolver, tanto em código como o próprio processo evolutivo do pensamento envolvido para toda a resolução e estruturação do problema.
+Este desafio foi muito interessante de desenvolver, tanto em código como o próprio processo evolutivo do pensamento envolvido para toda a resolução e estruturação do problema.
 \\
 \\
-Para resolver este desafio a ideia "imediata" que nos surgiu foi, uma vez que os objetivos de cada um são conhecidos por ambos e além disso existe uma ordem definida para as jogadas, então é possível que cada um consiga prever as jogada do outro. Ou seja, já que a Alice e o Bob jogam à vez, esta visão transmitiu-nos logo a ideia de recursividade mútua, onde a Alice prevê as jogadas do Bob e vice-versa.
+Para resolver este desafio a ideia "imediata" que surgiu foi, uma vez que os objetivos de cada um são conhecidos por ambos e além disso existe uma ordem definida para as jogadas, então é possível que cada um consiga prever as jogada do outro. Ou seja, já que a Alice e o Bob jogam à vez, esta visão transmitiu, nesse instante, a ideia de recursividade mútua, onde a Alice prevê as jogadas do Bob e vice-versa. 
 \\
 \\
-Para este efeito codificamos a função \emph{alice} de modo a obter o número máximo de pedras preciosas de entre as possíveis escolhas posteriores de Bob, sendo o seu objetivo oposto ao de Alice, ou seja, o de obter o número mínimo de pedras preciosas. Com o mesmo raciocínio definimos \emph{bob} que vai adquirir o mínimo de pedras preciosas de entre as diversas escolhas que a Alice poderá vir a tomar. \emph{both} foi definida de modo a ser possível observar os diferentes resultados obtidos por ambas as partes aquando do jogo ser inicializado por Alice ou por Bob.
+Para esse efeito codificou-se primeiro as funções \emph{alice}, \emph{bob} e \emph{both} e só depois (através das leis de recursividade mútua) definiu-se \emph{both} como catamorfismo. A função \emph{alice} foi definida de modo a obter o número máximo de pedras preciosas de entre as possíveis escolhas posteriores de Bob, sendo o seu objetivo oposto ao de Alice, ou seja, o de obter o número mínimo de pedras preciosas. Com o mesmo raciocínio definou-se \emph{bob} que adquire o mínimo de pedras preciosas de entre as diversas escolhas que a Alice poderá vir a tomar. \emph{both} foi definida de modo a ser possível observar os diferentes resultados obtidos por ambas as partes aquando do jogo ser inicializado por Alice ou por Bob.
 
 \begin{code}
 alice :: Ord c => LTree c -> c
@@ -1117,7 +1156,11 @@ bob (Fork (e,d)) = min (alice e) (alice d)
 both :: Ord d => LTree d -> (d, d)
 both t = (alice t, bob t)
 \end{code}
-
+\\
+\\
+Depois de definidas as três funções e para ser possível a utilização das leis da recursividade mútua, foi necessária a definição de uma função h e k. Por essa razão, calculou-se as mesmas a partir da definição de \emph{alice} e de \emph{bob} acima referidas como se pode ver a seguir.
+\\
+\\
 \begin{eqnarray*}
 \start
     |lcbr(
@@ -1157,25 +1200,63 @@ both t = (alice t, bob t)
 \just\equiv{ absorção-+ , natural-id }
 %
     |alice . in = (either (id)((uncurry max) . (p2 >< p2))) . (id + ( split (alice) (bob)) >< ( split (alice) (bob)))|
+%
+\just\equiv{ |F f = id + f >< f| }
+%
+    |alice . in = (either (id) ((uncurry max) . (p2 >< p2))) . F (split (alice) (bob)) |
 \end{eqnarray*}
-
+Logo, h= |(either (id) ((uncurry max) . (p2 >< p2)))|
+\\
+\\
+De modo análogo, a partir da definição acima indicada de \emph{bob}, e usando as mesmas leis, obtém-se
+\\
+k = |(either (id) ((uncurry min) . (p1 >< p1)))|.
+\\
+\\
+Depois de h e k definidas, tem-se o seguinte.
+\begin{eqnarray*}
+\start
+    |lcbr(
+        alice . in = (either (id) ((uncurry max) . (p2 >< p2))) . F (split (alice) (bob))
+    )(
+        bob . in = (either (id) ((uncurry min) . (p1 >< p1))) . F (split (alice) (bob))|
+    )
+%
+\just\equiv{ fokkinga }
+%
+    |split (alice) (bob) = cata (split (either (id) ((uncurry max) . (p2 . p2))) (either (id) ((uncurry min) . (p1 >< p1))))|
+\end{eqnarray*}
+Tendo como resultado a função \emph{both} definida como catamorfismo de LTree's.
 
 \subsection*{Problema 3}
-%diagrama extra dos tipos
-\begin{eqnarray*}
-\xymatrix@@C=2cm{
-    |(Tri* >< Tri*) >< Tri*|
-           \ar[d]^-{|uncurry (++) >< id|}
-\\
-    |Tri* >< Tri*|
-           \ar[d]^{|uncurry (++)|}
-\\
-    |Tri*|
-}
-\end{eqnarray*}
 
-Biblioteca |LTree3|:
-
+O raciocínio seguido nesta primeira parte do problema depende das diferentes funções definidas, pelo que vão ser explicadas separadamente.
+\\
+\\
+O \emph{inLTree3} recebe um Either onde a sua segunda componente é um par de um par, ou 
+seja, é do tipo ((|LTree3| a,|LTree3| a),|LTree3| a). Foi assim definida uma vez que, 
+em haskell, não é possível a existência de um tuplo com três elementos. Esta 
+função devolve uma LTree3. Para tal ser executado, \emph{inLTree3} é formado 
+pelos construtures do tipo |LTree3|, sendo que para os tipos de entrada e de Nodo 
+serem compatíveis é necessário recorrer ao uncurry duas vezes, de forma aos pares 
+recebidos ficarem em cadeia.
+\\
+\\
+Relativamente à função \emph{outLTree3} o mesmo tipo de pensamento de \emph{inLTree3} foi aqui utilizado. Neste caso, recebe uma |LTree3| e devolve um Either. O modo de funcionamento é caso seja de tipo |Tri| devolve-o, caso contrário agrupa as três |LTree3|'s num par de um par de modo a ser compatível com o tipo de saída da segunda componente do Either.
+\\
+\\
+A \emph{baseLTree3} é o bifuntor deste tipo (|LTree3|), havendo dois parâmetros diferentes: o |Tri| e a |LTree3|.
+\\
+\\
+\emph{recLTree3} é o functor de |LTree3|, ou seja, é o bifuntor de id e de um f que 
+irá receber.
+\\
+\\
+O funcionamento das funções \emph{cataLTree3}, \emph{anaLTree3} e \emph{hyloLTree3
+} é a sua definição recorrendo a funções previamente definidas do mesmo tipo.
+\\
+\\
+A biblioteca de |LTree3| é:
 \begin{code}
 inLTree3 = either Tri (uncurry (uncurry Nodo))
 
@@ -1192,10 +1273,11 @@ anaLTree3 f = inLTree3 . (recLTree3 (anaLTree3 f)) . f
 
 hyloLTree3 f g = cataLTree3 f . anaLTree3 g
 \end{code}
-Genes do hilomorfismo |sierpinski|:
 \\
 \\
-Diagrama do Catamorfismo:
+Esta segunda parte do problema 3, foi realizada através de gráficos. De modo a
+ definir o gene do catamorfismo foi feito o seu diagrama (indicado abaixo).
+\\
 \begin{eqnarray*}
 \xymatrix@@C=3cm@@R=1.7cm{
     |LTree3 Tri|
@@ -1212,14 +1294,115 @@ Diagrama do Catamorfismo:
            \ar[l]^-{|g1|}
 }
 \end{eqnarray*}
-\begin{code}
-g1 = undefined
+\\
+\\
+Nesse diagrama pode-se observar os diferentes tipos de entrada e de saída de \emph{folhasSierp}, tal como de |g1|. Deste modo, é percetível que este será um 
+Either, onde na primeira componente estará uma função que transforma um Tri numa 
+lista com esse mesmo Tri. Na segunda componente estará uma função que junta as
+ diferentes listas originadas de três |LTree3|'s numa só. Analisando o tipo que o
+ gene do catamorfismo recebe concluiu-se que será a composta entre duas funções,
+ uma que junta o primeiro elemento do par de listas numa só lista e outra que 
+junta a lista resultante com o segundo elemento do par inicial. Esta análise está representada através do diagrama que se segue.
+\\
+%diagrama extra dos tipos
+\begin{eqnarray*}
+\xymatrix@@C=2cm{
+    |((Tri* >< Tri*) >< Tri*)|
+           \ar[d]^-{|uncurry (++) >< id|}
+\\
+    |Tri* >< Tri*|
+           \ar[d]^{|uncurry (++)|}
+\\
+    |Tri*|
+}
+\end{eqnarray*}
+\\
+\\
+No sentido de se definir o gene do anamorfismo, foi, também, realizado o seu diagrama, como se pode ver de seguida.
 
-g2 (t,0) = undefined
+\begin{eqnarray*}
+\xymatrix@@C=3cm@@R=1.7cm{
+    |(Tri >< Nat0)|
+           \ar[d]_-{|geraSierp|}
+           \ar[r]_-{|g2|}
+&
+    |Tri + (((Tri >< Nat0) >< (Tri >< Nat0)) >< (Tri >< Nat0))|
+           \ar[d]^{|id + ((geraSierp >< geraSierp) >< geraSierp)|}
+\\
+     |LTree3 Tri|
+            \ar@@/_2pc/[r]_-{|out|}
+&
+     |Tri Tri + ((LTree3 Tri >< LTree3 Tri) >< LTree3 Tri)|
+           \ar@@/_2pc/[l]_-{|in|}
+}
+\end{eqnarray*}
+Neste diagrama pode-se observar os tipos recebidos e devolvidos pelas diferentes
+ funções, nomeadamente de |g2|, isto é, do gene do anamorfismo. Como o tipo
+ recebido é um par e o devolvido é um Either, é imediata a necessidade da 
+utilização das funções |i1| e |i2|. Tendo na segunda componente do Either três
+ pares, verifica-se também a necessidade do uso de split's. Isto encontra-se
+ explícito no seguinte diagrama.
+%g2
+\begin{eqnarray*}
+\xymatrix@@C=2cm{
+    |(Tri >< Nat0)|
+           \ar[d]^-{|split (i1 . id) (i2 . split (split (t1 >< (succ)) (t2 >< (succ))) (t3 >< (succ)))|}
+\\
+    |Tri + (((Tri >< Nat0) >< (Tri >< Nat0)) >< (Tri >< Nat0))|
+}
+\end{eqnarray*}
+A fim de ficar mais percetível, mostra-se, abaixo, os diferentes diagramas para |t1|, |t2| e |t3|.
+
+O objetivo destas funções é estabelecer os novos vértices e tamanhos dos catetos
+ dos três triângulos que se vão formar, para depois formar uma |LTree3| com esses 
+valores. 
+\\
+\\
+|t1| tem a funcionalidade de estabelecer os dados para o triângulo que vai ser criado à direita, somando à coordenada x metade do tamanho do cateto do triângulo original e, por sua vez, dividindo o tamanho do cateto por dois. O diagrama representa essa transformação.
+%t1
+\begin{eqnarray*}
+\xymatrix@@C=2cm{
+    |((Nat0 >< Nat0) >< Nat0)|
+           \ar[d]^-{|split (split ((uncurry (++)) . (p1 >< (/2))) (p2 . p1)) ((/2) . p2)|}
+\\
+    |((Nat0 >< Nat0) >< Nat0)|
+}
+\end{eqnarray*}
+\\
+\\
+|t2| tem uma funcionalidade análoga ao |t1|, mas tem como objetivo final criar o triângulo acima, para isso modifica a coordenada y talcomo é feito em |t1| e dividindo, também, o tamanho do cateto por dois. A representação de |t2| é feita através deste diagrama.
+%t2
+\begin{eqnarray*}
+\xymatrix@@C=2cm{
+    |((Nat0 >< Nat0) >< Nat0)|
+           \ar[d]^-{|split (split (p1 . p1) ((uncurry (++)) . (p2 >< (/2)))) ((/2) . p2)|}
+\\
+    |((Nat0 >< Nat0) >< Nat0)|
+}
+\end{eqnarray*}
+\\
+\\
+Por último, |t3| cria o triângulo cujas coordenadas se mantém e simplesmente se reduz o tamanho do cateto. Desta forma, defini-se o tamanha do cateto sendo igual à sua metade, como se pode ver no diagrama abaixo.
+%t3
+\begin{eqnarray*}
+\xymatrix@@C=2cm{
+    |((Nat0 >< Nat0) >< Nat0)|
+           \ar[d]^-{|(id >< id) >< (/2)|}
+\\
+    |((Nat0 >< Nat0) >< Nat0)|
+}
+\end{eqnarray*}
+\\
+\\
+A junção destas funções depois destes procedimentos para representar os genes do hilomorfismo |sierpinski| é:
+\begin{code}
+g1 = either singl ((uncurry (++)) . ((uncurry (++)) >< id))
+
+g2 (t,0) = i1 t
 g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
-     t1 = undefined
-     t2 = undefined
-     t3 = undefined
+     t1 = split (split ((uncurry (++)) . (p1 >< (/2))) (p2 . p1)) ((/2) . p2)
+     t2 = split (split (p1 . p1) ((uncurry (++)) . (p2 >< (/2)))) ((/2) . p2)
+     t3 = (id >< id) >< (/2)
 \end{code}
 
 \subsection*{Problema 4}

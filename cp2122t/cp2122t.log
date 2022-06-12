@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.6.7)  10 JUN 2022 22:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.6.7)  12 JUN 2022 11:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -764,73 +764,190 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 \openout5 = `cp2122t.ptb'.
 
  [10]
-Underfull \hbox (badness 10000) in paragraph at lines 1183--1189
+Underfull \hbox (badness 10000) in paragraph at lines 1183--1188
 
  []
 
 
-Overfull \hbox (54.85295pt too wide) in alignment at lines 1201--1216
+Overfull \hbox (54.85295pt too wide) in alignment at lines 1200--1215
  [][][] []
  []
 
-[11] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 1311--1318
+[11]
+Overfull \hbox (528.02975pt too wide) in alignment at lines 1296--1319
+ [][][] []
+ []
+
+[12]
+Overfull \hbox (222.25987pt too wide) in alignment at lines 1321--1340
+ [][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1344--1351
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1311--1318
+Underfull \hbox (badness 10000) in paragraph at lines 1344--1351
 
  []
 
 \openout5 = `cp2122t.ptb'.
 
-<xymatrix 1x3 99> [13]
+
+Underfull \hbox (badness 10000) in paragraph at lines 1371--1377
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1371--1377
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1371--1377
+
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 1408--1418
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1408--1418
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1458
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1458
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1458
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1458
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1458
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1431--1458
+
+ []
+
+[14]
 \openout5 = `cp2122t.ptb'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1405--1410
+Underfull \hbox (badness 10000) in paragraph at lines 1477--1483
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1477--1483
 
  []
 
 <xymatrix 2x2 249>
-Overfull \hbox (15.71405pt too wide) in alignment at lines 1410--1425
+Overfull \hbox (15.71405pt too wide) in alignment at lines 1483--1498
  [][][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1498--1510
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1498--1510
+
+ []
+
+<xymatrix 1x3 99>
+Underfull \hbox (badness 10000) in paragraph at lines 1520--1524
+
+ []
+
+<xymatrix 2x2 249>
+Overfull \hbox (1.48297pt too wide) in alignment at lines 1525--1540
+ [][][] []
+ []
+
+[15] <xymatrix 1x2 54>
+Underfull \hbox (badness 10000) in paragraph at lines 1558--1565
+
+ []
+
+<xymatrix 1x2 54>
+Underfull \hbox (badness 10000) in paragraph at lines 1572--1577
+
+ []
+
+<xymatrix 1x2 54>
+Underfull \hbox (badness 10000) in paragraph at lines 1584--1589
+
+ []
+
+<xymatrix 1x2 54>
+Underfull \hbox (badness 10000) in paragraph at lines 1596--1600
+
+ []
+
+
+Overfull \hbox (9.99753pt too wide) in paragraph at lines 1596--1600
+\OT1/ppl/m/n/10 A jun[][]ao des-tas fun[][]oes de-pois des-tes pro-ce-di-men-to
+s para re-pre-sen-tar os ge-nes do hi-lo-mor-fismo $[]$
  []
 
 \openout5 = `cp2122t.ptb'.
 
+[16]
 \openout5 = `cp2122t.ptb'.
 
 \openout5 = `cp2122t.ptb'.
 
 \openout5 = `cp2122t.ptb'.
 
-(./cp2122t.ind [14] [15
+ (./cp2122t.ind [17] [18
 
 
 ]) (./cp2122t.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1501.
- [16
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1675.
+ [19
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1501.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1675.
  (./cp2122t.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1501.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1501.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1675.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1675.
 
 Package rerunfilecheck Info: File `cp2122t.out' has not changed.
 (rerunfilecheck)             Checksum: 52DE7DC0D96D565890C828A31E533207;598.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1501.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1675.
  ) 
 Here is how much of TeX's memory you used:
- 13383 strings out of 481239
- 194590 string characters out of 5920378
- 529656 words of memory out of 5000000
+ 13386 strings out of 481239
+ 194611 string characters out of 5920378
+ 535656 words of memory out of 5000000
  28223 multiletter control sequences out of 15000+600000
  576889 words of font info for 155 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,18n,77p,3290b,752s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,18n,77p,3290b,760s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{section.3.17} has been referenced but does not ex
 ist, replaced by a fixed one
 
@@ -850,23 +967,24 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont
-/line10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/
-msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/m
-sbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/pal
-atino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8
-a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/xypic/xybtip10.pfb>
-Output written on cp2122t.pdf (16 pages, 793873 bytes).
+ic/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/line10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
+w/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/u
+plr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/xypic/xybtip10.pfb>
+Output written on cp2122t.pdf (19 pages, 814911 bytes).
 PDF statistics:
- 426 PDF objects out of 1000 (max. 8388607)
- 361 compressed objects within 4 object streams
- 63 named destinations out of 1000 (max. 500000)
+ 443 PDF objects out of 1000 (max. 8388607)
+ 374 compressed objects within 4 object streams
+ 66 named destinations out of 1000 (max. 500000)
  80 words of extra memory for PDF output out of 10000 (max. 10000000)
 
