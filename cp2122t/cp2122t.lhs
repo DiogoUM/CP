@@ -1321,7 +1321,7 @@ No sentido de se definir o gene do anamorfismo, foi, também, realizado o seu di
      |LTree3 Tri|
             \ar@@/_2pc/[r]_-{|out|}
 &
-     |Tri Tri + ((LTree3 Tri >< LTree3 Tri) >< LTree3 Tri)|
+     |Tri + ((LTree3 Tri >< LTree3 Tri) >< LTree3 Tri)|
            \ar@@/_2pc/[l]_-{|in|}
 }
 \end{eqnarray*}
