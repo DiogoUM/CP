@@ -1597,13 +1597,13 @@ A junção destas funções depois destes procedimentos para representar os gene
 \>[B]{}g_2 \;(((\Varid{x},\Varid{y}),\Varid{s}),\Varid{n}\mathbin{+}\mathrm{1})\mathrel{=}i_2\;((\Varid{t1},\Varid{t2}),\Varid{t3})\;\mathbf{where}{}\<[E]%
 \\
 \>[B]{}\hsindent{6}{}\<[6]%
-\>[6]{}\Varid{t1}\mathrel{=}\conj{\conj{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p1\times(\mathbin{/}\mathrm{2}))}{\p2\comp \p1}}{(\mathbin{/}\mathrm{2})\comp \p2}{}\<[E]%
+\>[6]{}\Varid{t1}\mathrel{=}\conj{\conj{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p1\times(\mathbin{/}\mathrm{2}))}{\p2\comp \p1}}{(\mathbin{/}\mathrm{2})\comp \p2}\times(\Varid{pred}){}\<[E]%
 \\
 \>[B]{}\hsindent{6}{}\<[6]%
-\>[6]{}\Varid{t2}\mathrel{=}\conj{\conj{\p1\comp \p1}{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p2\times(\mathbin{/}\mathrm{2}))}}{(\mathbin{/}\mathrm{2})\comp \p2}{}\<[E]%
+\>[6]{}\Varid{t2}\mathrel{=}\conj{\conj{\p1\comp \p1}{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p2\times(\mathbin{/}\mathrm{2}))}}{(\mathbin{/}\mathrm{2})\comp \p2}\times(\Varid{pred}){}\<[E]%
 \\
 \>[B]{}\hsindent{6}{}\<[6]%
-\>[6]{}\Varid{t3}\mathrel{=}(\Varid{id}\times\Varid{id})\times(\mathbin{/}\mathrm{2}){}\<[E]%
+\>[6]{}\Varid{t3}\mathrel{=}((\Varid{id}\times\Varid{id})\times(\mathbin{/}\mathrm{2}))\times(\Varid{pred}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
