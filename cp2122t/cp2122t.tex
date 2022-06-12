@@ -1537,7 +1537,7 @@ utilização das funções \ensuremath{i_1} e \ensuremath{i_2}. Tendo na segunda
 \begin{eqnarray*}
 \xymatrix@C=2cm{
     \ensuremath{(\Conid{Tri}\times\N_0)}
-           \ar[d]^-{\ensuremath{\conj{i_1\comp \Varid{id}}{i_2\comp \conj{\conj{\Varid{t1}\times(\succ )}{\Varid{t2}\times(\succ )}}{\Varid{t3}\times(\succ )}}}}
+           \ar[d]^-{\ensuremath{\conj{i_1\comp \p1}{i_2\comp \conj{\conj{\Varid{t1}}{\Varid{t2}}}{\Varid{t3}}}}}
 \\
     \ensuremath{\Conid{Tri}\mathbin{+}(((\Conid{Tri}\times\N_0)\times(\Conid{Tri}\times\N_0))\times(\Conid{Tri}\times\N_0))}
 }
@@ -1553,10 +1553,10 @@ valores.
 %t1
 \begin{eqnarray*}
 \xymatrix@C=2cm{
-    \ensuremath{((\N_0\times\N_0)\times\N_0)}
-           \ar[d]^-{\ensuremath{\conj{\conj{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p1\times(\mathbin{/}\mathrm{2}))}{\p2\comp \p1}}{(\mathbin{/}\mathrm{2})\comp \p2}}}
+    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
+           \ar[d]^-{\ensuremath{\conj{\conj{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p1\times(\mathbin{/}\mathrm{2}))}{\p2\comp \p1}}{(\mathbin{/}\mathrm{2})\comp \p2}\times(\Varid{pred})}}
 \\
-    \ensuremath{((\N_0\times\N_0)\times\N_0)}
+    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
 }
 \end{eqnarray*}
 \\
@@ -1565,10 +1565,10 @@ valores.
 %t2
 \begin{eqnarray*}
 \xymatrix@C=2cm{
-    \ensuremath{((\N_0\times\N_0)\times\N_0)}
-           \ar[d]^-{\ensuremath{\conj{\conj{\p1\comp \p1}{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p2\times(\mathbin{/}\mathrm{2}))}}{(\mathbin{/}\mathrm{2})\comp \p2}}}
+    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
+           \ar[d]^-{\ensuremath{\conj{\conj{\p1\comp \p1}{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p2\times(\mathbin{/}\mathrm{2}))}}{(\mathbin{/}\mathrm{2})\comp \p2}\times(\Varid{pred})}}
 \\
-    \ensuremath{((\N_0\times\N_0)\times\N_0)}
+    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
 }
 \end{eqnarray*}
 \\
@@ -1577,10 +1577,10 @@ Por último, \ensuremath{\Varid{t3}} cria o triângulo cujas coordenadas se mant
 %t3
 \begin{eqnarray*}
 \xymatrix@C=2cm{
-    \ensuremath{((\N_0\times\N_0)\times\N_0)}
-           \ar[d]^-{\ensuremath{(\Varid{id}\times\Varid{id})\times(\mathbin{/}\mathrm{2})}}
+    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
+           \ar[d]^-{\ensuremath{((\Varid{id}\times\Varid{id})\times(\mathbin{/}\mathrm{2}))\times(\Varid{pred})}}
 \\
-    \ensuremath{((\N_0\times\N_0)\times\N_0)}
+    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
 }
 \end{eqnarray*}
 \\

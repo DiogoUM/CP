@@ -1335,7 +1335,7 @@ utilização das funções |i1| e |i2|. Tendo na segunda componente do Either tr
 \begin{eqnarray*}
 \xymatrix@@C=2cm{
     |(Tri >< Nat0)|
-           \ar[d]^-{|split (i1 . id) (i2 . split (split (t1 >< (succ)) (t2 >< (succ))) (t3 >< (succ)))|}
+           \ar[d]^-{|split (i1 . p1) (i2 . split (split (t1) (t2)) (t3))|}
 \\
     |Tri + (((Tri >< Nat0) >< (Tri >< Nat0)) >< (Tri >< Nat0))|
 }
@@ -1351,10 +1351,10 @@ valores.
 %t1
 \begin{eqnarray*}
 \xymatrix@@C=2cm{
-    |((Nat0 >< Nat0) >< Nat0)|
-           \ar[d]^-{|split (split ((uncurry (++)) . (p1 >< (/2))) (p2 . p1)) ((/2) . p2)|}
+    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
+           \ar[d]^-{|split (split ((uncurry (++)) . (p1 >< (/2))) (p2 . p1)) ((/2) . p2) >< (pred)|}
 \\
-    |((Nat0 >< Nat0) >< Nat0)|
+    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
 }
 \end{eqnarray*}
 \\
@@ -1363,10 +1363,10 @@ valores.
 %t2
 \begin{eqnarray*}
 \xymatrix@@C=2cm{
-    |((Nat0 >< Nat0) >< Nat0)|
-           \ar[d]^-{|split (split (p1 . p1) ((uncurry (++)) . (p2 >< (/2)))) ((/2) . p2)|}
+    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
+           \ar[d]^-{|split (split (p1 . p1) ((uncurry (++)) . (p2 >< (/2)))) ((/2) . p2) >< (pred)|}
 \\
-    |((Nat0 >< Nat0) >< Nat0)|
+    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
 }
 \end{eqnarray*}
 \\
@@ -1375,10 +1375,10 @@ Por último, |t3| cria o triângulo cujas coordenadas se mantém e simplesmente 
 %t3
 \begin{eqnarray*}
 \xymatrix@@C=2cm{
-    |((Nat0 >< Nat0) >< Nat0)|
-           \ar[d]^-{|(id >< id) >< (/2)|}
+    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
+           \ar[d]^-{|((id >< id) >< (/2)) >< (pred)|}
 \\
-    |((Nat0 >< Nat0) >< Nat0)|
+    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
 }
 \end{eqnarray*}
 \\
