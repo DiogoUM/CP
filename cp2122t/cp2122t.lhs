@@ -1073,16 +1073,17 @@ Como já definimos |h|, |k| e |l| temos o seguinte:
 \begin{eqnarray*}
 \start
     |lcbr(
-        (q d) . in = (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1) . F (split (q d) (split (r d) (c d)))
+        (q d) . in = (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1) . F (split (q d) (split (r d) (c d))))
     )(
-        (r d) . in = (either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2) . F (split (q d) (split (r d) (c d)))
-    ))
-        (c d) . in = (either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2) . F (split (q d) (split (r d) (c d)))
+        (r d) . in = (either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2) . F (split (q d) (split (r d) (c d))))
+    )
+        (c d) . in = (either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2) . F (split (q d) (split (r d) (c d))))
     |
 %
 \just\equiv{ fokkinga }
 %
-    |split ((q d)) (split ((r d)) ((c d))) = (cata (split (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1)) (split(either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2)) ((either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2)) ) )|
+    |split ((q d)) (split ((r d)) ((c d))) =|
+    |(cata (split (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1)) (split(either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2)) ((either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2)) ) )|
 %
 \just\equiv{ lei da troca }
 %
@@ -1231,31 +1232,19 @@ Tendo como resultado a função \emph{both} definida como catamorfismo de LTree'
 \subsection*{Problema 3}
 
 O raciocínio seguido nesta primeira parte do problema depende das diferentes funções definidas, pelo que vão ser explicadas separadamente.
-\\
-\\
-O \emph{inLTree3} recebe um Either onde a sua segunda componente é um par de um par, ou 
+\begin{itemize}
+\item O \emph{inLTree3} recebe um Either onde a sua segunda componente é um par de um par, ou 
 seja, é do tipo ((|LTree3| a,|LTree3| a),|LTree3| a). Foi assim definida uma vez que, 
 em haskell, não é possível a existência de um tuplo com três elementos. Esta 
 função devolve uma LTree3. Para tal ser executado, \emph{inLTree3} é formado 
 pelos construtures do tipo |LTree3|, sendo que para os tipos de entrada e de Nodo 
 serem compatíveis é necessário recorrer ao uncurry duas vezes, de forma aos pares 
 recebidos ficarem em cadeia.
-\\
-\\
-Relativamente à função \emph{outLTree3} o mesmo tipo de pensamento de \emph{inLTree3} foi aqui utilizado. Neste caso, recebe uma |LTree3| e devolve um Either. O modo de funcionamento é caso seja de tipo |Tri| devolve-o, caso contrário agrupa as três |LTree3|'s num par de um par de modo a ser compatível com o tipo de saída da segunda componente do Either.
-\\
-\\
-A \emph{baseLTree3} é o bifuntor deste tipo (|LTree3|), havendo dois parâmetros diferentes: o |Tri| e a |LTree3|.
-\\
-\\
-\emph{recLTree3} é o functor de |LTree3|, ou seja, é o bifuntor de id e de um f que 
-irá receber.
-\\
-\\
-O funcionamento das funções \emph{cataLTree3}, \emph{anaLTree3} e \emph{hyloLTree3
-} é a sua definição recorrendo a funções previamente definidas do mesmo tipo.
-\\
-\\
+\item Relativamente à função \emph{outLTree3} o mesmo tipo de pensamento de \emph{inLTree3} foi aqui utilizado. Neste caso, recebe uma |LTree3| e devolve um Either. O modo de funcionamento é caso seja de tipo |Tri| devolve-o, caso contrário agrupa as três |LTree3|'s num par de um par de modo a ser compatível com o tipo de saída da segunda componente do Either.
+\item A \emph{baseLTree3} é o bifuntor deste tipo (|LTree3|), havendo dois parâmetros diferentes: o |Tri| e a |LTree3|.
+\item \emph{recLTree3} é o functor de |LTree3|, ou seja, é o bifuntor de id e de um f que irá receber.
+\item O funcionamento das funções \emph{cataLTree3}, \emph{anaLTree3} e \emph{hyloLTree3} é a sua definição recorrendo a funções previamente definidas do mesmo tipo.
+\end{itemize}
 A biblioteca de |LTree3| é:
 \begin{code}
 inLTree3 = either Tri (uncurry (uncurry Nodo))

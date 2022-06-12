@@ -1295,11 +1295,12 @@ modifica-se as equações de modo individual.
 Como já definimos \ensuremath{\Varid{h}}, \ensuremath{\Varid{k}} e \ensuremath{\Varid{l}} temos o seguinte:
 \begin{eqnarray*}
 \start
-    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \mathbf{in}\mathrel{=}(\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\;((\Varid{r}\;\Varid{d})\comp \mathbf{in}\mathrel{=}(\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}))\;(\Varid{c}\;\Varid{d})\comp \mathbf{in}\mathrel{=}(\alt{\underline{\Varid{d}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\\cdot \end{lcbr}}
+    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \mathbf{in}\mathrel{=}(\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\\(\Varid{r}\;\Varid{d})\comp \mathbf{in}\mathrel{=}(\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}\;(\Varid{c}\;\Varid{d})\comp \mathbf{in}\mathrel{=}(\alt{\underline{\Varid{d}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})}
 %
 \just\equiv{ fokkinga }
 %
-    \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\cata{\conj{\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1}}{\conj{\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2}}{(\alt{\underline{\Varid{d}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2})}}}}
+    \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}}
+    \ensuremath{\cata{\conj{\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1}}{\conj{\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2}}{(\alt{\underline{\Varid{d}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2})}}}}
 %
 \just\equiv{ lei da troca }
 %
@@ -1429,31 +1430,19 @@ Tendo como resultado a função \emph{both} definida como catamorfismo de LTree'
 \subsection*{Problema 3}
 
 O raciocínio seguido nesta primeira parte do problema depende das diferentes funções definidas, pelo que vão ser explicadas separadamente.
-\\
-\\
-O \emph{inLTree3} recebe um Either onde a sua segunda componente é um par de um par, ou 
+\begin{itemize}
+\item O \emph{inLTree3} recebe um Either onde a sua segunda componente é um par de um par, ou 
 seja, é do tipo ((\ensuremath{\mathsf{LTree3}} a,\ensuremath{\mathsf{LTree3}} a),\ensuremath{\mathsf{LTree3}} a). Foi assim definida uma vez que, 
 em haskell, não é possível a existência de um tuplo com três elementos. Esta 
 função devolve uma LTree3. Para tal ser executado, \emph{inLTree3} é formado 
 pelos construtures do tipo \ensuremath{\mathsf{LTree3}}, sendo que para os tipos de entrada e de Nodo 
 serem compatíveis é necessário recorrer ao uncurry duas vezes, de forma aos pares 
 recebidos ficarem em cadeia.
-\\
-\\
-Relativamente à função \emph{outLTree3} o mesmo tipo de pensamento de \emph{inLTree3} foi aqui utilizado. Neste caso, recebe uma \ensuremath{\mathsf{LTree3}} e devolve um Either. O modo de funcionamento é caso seja de tipo \ensuremath{\Conid{Tri}} devolve-o, caso contrário agrupa as três \ensuremath{\mathsf{LTree3}}'s num par de um par de modo a ser compatível com o tipo de saída da segunda componente do Either.
-\\
-\\
-A \emph{baseLTree3} é o bifuntor deste tipo (\ensuremath{\mathsf{LTree3}}), havendo dois parâmetros diferentes: o \ensuremath{\Conid{Tri}} e a \ensuremath{\mathsf{LTree3}}.
-\\
-\\
-\emph{recLTree3} é o functor de \ensuremath{\mathsf{LTree3}}, ou seja, é o bifuntor de id e de um f que 
-irá receber.
-\\
-\\
-O funcionamento das funções \emph{cataLTree3}, \emph{anaLTree3} e \emph{hyloLTree3
-} é a sua definição recorrendo a funções previamente definidas do mesmo tipo.
-\\
-\\
+\item Relativamente à função \emph{outLTree3} o mesmo tipo de pensamento de \emph{inLTree3} foi aqui utilizado. Neste caso, recebe uma \ensuremath{\mathsf{LTree3}} e devolve um Either. O modo de funcionamento é caso seja de tipo \ensuremath{\Conid{Tri}} devolve-o, caso contrário agrupa as três \ensuremath{\mathsf{LTree3}}'s num par de um par de modo a ser compatível com o tipo de saída da segunda componente do Either.
+\item A \emph{baseLTree3} é o bifuntor deste tipo (\ensuremath{\mathsf{LTree3}}), havendo dois parâmetros diferentes: o \ensuremath{\Conid{Tri}} e a \ensuremath{\mathsf{LTree3}}.
+\item \emph{recLTree3} é o functor de \ensuremath{\mathsf{LTree3}}, ou seja, é o bifuntor de id e de um f que irá receber.
+\item O funcionamento das funções \emph{cataLTree3}, \emph{anaLTree3} e \emph{hyloLTree3} é a sua definição recorrendo a funções previamente definidas do mesmo tipo.
+\end{itemize}
 A biblioteca de \ensuremath{\mathsf{LTree3}} é:
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
