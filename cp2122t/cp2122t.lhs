@@ -1073,11 +1073,11 @@ Como já definimos |h|, |k| e |l| temos o seguinte:
 \begin{eqnarray*}
 \start
     |lcbr(
-        (q d) . in = (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1) . F (split (q d) (split (r d) (c d))))
+        (q d) . in = either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1) . F (split (q d) (split (r d) (c d)))
     )(
-        (r d) . in = (either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2) . F (split (q d) (split (r d) (c d))))
+        (r d) . in = either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2) . F (split (q d) (split (r d) (c d)))
     )
-        (c d) . in = (either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2) . F (split (q d) (split (r d) (c d))))
+        (c d) . in = either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2) . F (split (q d) (split (r d) (c d)))
     |
 %
 \just\equiv{ fokkinga }
