@@ -970,22 +970,22 @@ modifica-se as equações de modo individual.
 \just\equiv{ def-(q d) , 1.ª lei de fusão do condicional , igualdade extensional }
 %
     |lcbr(
-        h1 = const (0)
+        h1 = const (zero)
     )(
-        h2 (a, (b, c)) = if c == 0 then a+1 else a
+        h2 d (a, (b, c)) = if c == 0 then a+1 else a
     )|
 %
 \just\equiv{ igualdade extensional , def-cond }
 %
     |lcbr(
-        h1 = const (0)
+        h1 = const (zero)
     )(
-        h2 = (== 0) . p2 . p2 -> (succ) . p1, p1
+        h2 = (== 0) . p2 . p2 . (curry p2) -> (succ) . p1 . (curry p2), p1 . (curry p2)
     )|
 %
 \just\equiv{ |h = (either (h1) (h2))| }
 %
-    |h = (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1)|
+    |h = (either (const (zero)) ((== 0) . p2 . p2 . (curry p2) -> (succ) . p1 . (curry p2), p1 . (curry p2))|
 \end{eqnarray*}
 \item Equação nº2
 \begin{eqnarray*}
@@ -1011,22 +1011,22 @@ modifica-se as equações de modo individual.
 \just\equiv{ def-(r d) , igualdade extensional }
 %
     |lcbr(
-        k1 = const (0)
+        k1 = const (zero)
     )(
-        k2 (a, (b, c)) = if c == 0 then 0 else 1+b
+        k2 d (a, (b, c)) = if c == 0 then 0 else 1+b
     )|
 %
 \just\equiv{ igualdade extensional , def-cond , def-const }
 %
     |lcbr(
-        k1 = const (0)
+        k1 = const (zero)
     )(
-        k2 = (== 0) . p2 . p2 -> const (0), (succ) . p1 . p2
+        k2 = (== 0) . p2 . p2 . (curry p2) -> const (zero), (succ) . p1 . p2 . (curry p2)
     )|
 %
 \just\equiv{ |k = (either (k1) (k2))| }
 %
-    |k = (either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2)|
+    |k = (either (const (zero)) ((== 0) . p2 . p2 . (curry p2) -> const (zero), (succ) . p1 . p2 . (curry p2) )|
 \end{eqnarray*}
 \item Equação nº3
 \begin{eqnarray*}
@@ -1052,74 +1052,66 @@ modifica-se as equações de modo individual.
 \just\equiv{ def-(c d) , igualdade extensional }
 %
     |lcbr(
-        l1 = const (d)
+        l1 =  const (const (d))
     )(
-        l2 (a, (b, c)) = if c == 0 then d else c-1
+        l2 d (a, (b, c)) = if c == 0 then d else c-1
     )|
 %
 \just\equiv{ igualdade extensional , def-cond }
 %
     |lcbr(
-        l1 = const (d)
+        l1 = const (const (d))
     )(
-        l2 = (== 0) . p2 . p2 -> const (d), (-1) . p2 . p2
+        l2 = (== 0) . p2 . p2 . (curry p2) -> const (const (d)), (-1) . p2 . p2 . (curry p2)
     )|
 %
 \just\equiv{ |l = (either (l1) (l2))| }
 %
-    |l = (either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2)|
+    |l = (either (const (const (d))) ((== 0) . p2 . p2 . (curry p2) -> const (const (d)), (-1) . p2 . p2 . (curry p2))|
 \end{eqnarray*}
 \end{itemize}
 Como já definimos |h|, |k| e |l| temos o seguinte:
 \begin{eqnarray*}
 \start
     |lcbr3(
-        (q d) . in = either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1) . F (split (q d) (split (r d) (c d)))
+        (q d) . in = either (const (zero)) (h1) . F (split (q d) (split (r d) (c d)))
     )(
-        (r d) . in = either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2) . F (split (q d) (split (r d) (c d)))
+        (r d) . in = either (const (zero)) (k2) . F (split (q d) (split (r d) (c d)))
     )(
-        (c d) . in = either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2) . F (split (q d) (split (r d) (c d)))
+        (c d) . in = either (const (const (d))) (l2) . F (split (q d) (split (r d) (c d)))
     )|
 %
 \just\equiv{ fokkinga }
 %
     |split ((q d)) (split ((r d)) ((c d))) =|
-    |(cata (split (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1)) (split(either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2)) ((either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2)) ) )|
+    |(cata (split (either (const (zero)) (h2)) (split (either (const (zero)) (k2)) (either (const (const (d))) (l2)))))|
 %
 \just\equiv{ lei da troca }
 %
-    |split ((q d)) (split ((r d)) ((c d))) = (cata (split (either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1)) (either (split (const (0)) (const (d))) (split ((==0) . p2 . p2 -> (succ) . p1, p1) ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2))))|
+    |split ((q d)) (split ((r d)) ((c d))) = (cata (split (either (const (zero)) (h2)) (either (split (const (zero)) (const (const (d)))) (split (k2) (l2)))))|
 %
 \just\equiv{ lei da troca }
 %
-    |split ((q d)) (split ((r d)) ((c d))) = (cata (either (split (const (0)) (split (const (0)) (const (d)))) (split ((==0) . p1 . p1 -> (succ) . p1, +1) (split ((==0) . p2 . p2 -> const (0), (succ . p1 . p2)) ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2) ) )))|
+    |split ((q d)) (split ((r d)) ((c d))) = (cata (either (split (const (zero)) (split (const (zero)) (const (const (d))))) (split (h2) (split (k2) (l2) ) )))|
 %
 \just\equiv{ igualdade extensional, def-split, def-const}
 %
-    |split ((q d)) (split ((r d)) ((c d))) = (cata (either (const ((0,(0,d)))) (split ((==0) . p1 . p1 -> (succ) . p1, +1) (split ((==0) . p2 . p2 -> const (0), (succ . p1 . p2)) ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2) ) ) ))|
+    |split ((q d)) (split ((r d)) ((c d))) = (cata (either (const ((zero,(zero,const (d))))) (split (h2) (split (k2) (l2) ) )))|
 %
 \just\equiv{ def for }
 %
-    |split ((q d)) (split ((r d)) ((c d))) = for (split ((==0) . p1 . p1 -> (succ) . p1, +1) (split ((==0) . p2 . p2 -> const (0), (succ . p1 . p2)) ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2) ) ) ((0,(0,d)))|
+    |split ((q d)) (split ((r d)) ((c d))) = for (split (h2) (split (k2) (l2 ) )) ((0,(0,d)))|
 \end{eqnarray*}
 Prova-se, agora, a igualdade entre (g d) e o split que se encontra no ciclo for obtido.
 \begin{eqnarray*}
 \start
-    |(g d) = (split ((==0) . p1 . p1 -> (succ) . p1, +1) (split ((==0) . p2 . p2 -> const (0), (succ . p1 . p2)) ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2) ) )|
+    |(g d) = (split (h2) (split (k2) (l2) ) )|
 %
 \just\equiv{ igualdade extensional, def-split }
 %
-    |g d (q,(r,c)) = (((==0) . p2 . p2 -> (succ) . p1, p1) (q,(r,c)), (((==0) . p2 . p2 -> const (0), (succ) . p1 . p2) (q,(r,c)), ((==0) . p2 . p2 -> const (d), (-1) . p2 . p2)))|
+    |g d (q,(r,c)) = (h2 d (q,(r,c)), (k2 d (q,(r,c)), l2 d (q,(r,c))))|
 %
-\just\equiv{ def |p -> f,g| }
-%
-    |lcbr(
-        g d (q,(r,c)) = (==0) . p2 . p2 (q,(r,c)) ==> ((succ) . p1 (q,(r,c)), const (0) (q,(r,c)), const (d) (q,(r,c)))
-    )(
-        g d (q,(r,c)) = not (==0) . p2 . p2 (q,(r,c)) ==> (p1 (q,(r,c)), (succ) . p1 . p2 (q,(r,c)), (-1) . p2 . p2 (q,(r,c))) 
-    )|
-%
-\just\equiv{ def succ, def-const, def-proj }
+\just\equiv{ def |p -> f,g|,  def succ, def-const, def-proj, curry }
 %
     |lcbr(
        g d (q,(r,c)) = (==0) c ==> (q+1,(0,d))
@@ -1234,13 +1226,7 @@ Tendo como resultado a função \emph{both} definida como catamorfismo de LTree'
 
 O raciocínio seguido nesta primeira parte do problema depende das diferentes funções definidas, pelo que vão ser explicadas separadamente.
 \begin{itemize}
-\item O \emph{inLTree3} recebe um Either onde a sua segunda componente é um par de um par, ou 
-seja, é do tipo ((|LTree3| a,|LTree3| a),|LTree3| a). Foi assim definida uma vez que, 
-em haskell, não é possível a existência de um tuplo com três elementos. Esta 
-função devolve uma LTree3. Para tal ser executado, \emph{inLTree3} é formado 
-pelos construtures do tipo |LTree3|, sendo que para os tipos de entrada e de Nodo 
-serem compatíveis é necessário recorrer ao uncurry duas vezes, de forma aos pares 
-recebidos ficarem em cadeia.
+\item O \emph{inLTree3} recebe um Either onde a sua segunda componente é um par e o seu primeiro elemento também o é, ou seja, é do tipo ((|LTree3| a,|LTree3| a),|LTree3| a). Foi assim definida uma vez que, em haskell, não é possível a existência de um tuplo com três elementos. Esta função devolve uma LTree3. Para tal ser executado, \emph{inLTree3} é formado pelos construtures do tipo |LTree3|, sendo que para ser possível a utilização de |Nodo| é necessária a realização do uncurry duas vezes consecutivas.
 \item Relativamente à função \emph{outLTree3} o mesmo tipo de pensamento de \emph{inLTree3} foi aqui utilizado. Neste caso, recebe uma |LTree3| e devolve um Either. O modo de funcionamento é caso seja de tipo |Tri| devolve-o, caso contrário agrupa as três |LTree3|'s num par de um par de modo a ser compatível com o tipo de saída da segunda componente do Either.
 \item A \emph{baseLTree3} é o bifuntor deste tipo (|LTree3|), havendo dois parâmetros diferentes: o |Tri| e a |LTree3|.
 \item \emph{recLTree3} é o functor de |LTree3|, ou seja, é o bifuntor de id e de um f que irá receber.
@@ -1351,6 +1337,9 @@ g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
      t2 = (((x,y+(div s 2)),div s 2),n)
      t3 = (((x,y),div s 2),n)
 \end{code}
+\\
+\\
+Nota: Ao correr a função |teste| já definida o ficheiro html não abre automaticamente, sendo necessário abri-lo manualmente.
 
 \subsection*{Problema 4}
 
@@ -1358,20 +1347,20 @@ g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
 propagate :: Monad m => (t -> m a) -> [t] -> m [a]
 propagate f = cataList (g f) where
    g f = either (return . (nil)) (g2 f)
-   g2 f (a,b) = undefined
+   g2 f (a,b) = do{x <- f a; y <- b; return (x:y)}
 \end{code}
 
 \begin{code}
 propagate3 :: (Monad m) => (Bit3 -> m Bit3) -> [Bit] -> m [Bit]
 propagate3 f = cataList (g f) where
-   g f = either undefined (g2 f)
+   g f = either (return . (nil)) (g2 f)
    g2 f (a,b) = undefined
 \end{code}
 A função |bflip3|, a programar a seguir, deverá estender |bflip| aos três bits da entrada:
 
 \begin{code}
 bflip3 :: Bit3 -> Dist Bit3
-bflip3(a,b,c) = do { undefined } 
+bflip3(a,b,c) = do { x <- bflip a; y <- bflip b; z <- bflip c; return (x,y,z)} 
 
 \end{code}
 

@@ -1231,15 +1231,15 @@ modifica-se as equações de modo individual.
 %
 \just\equiv{ def-(q d) , 1.ª lei de fusão do condicional , igualdade extensional }
 %
-    \ensuremath{\begin{lcbr}h_1 \mathrel{=}\underline{\mathrm{0}}\\h_2 \;(\Varid{a},(\Varid{b},\Varid{c}))\mathrel{=}\mathbf{if}\;\Varid{c}\equiv \mathrm{0}\;\mathbf{then}\;\Varid{a}\mathbin{+}\mathrm{1}\;\mathbf{else}\;\Varid{a}\end{lcbr}}
+    \ensuremath{\begin{lcbr}h_1 \mathrel{=}\underline{\Varid{zero}}\\h_2 \;\Varid{d}\;(\Varid{a},(\Varid{b},\Varid{c}))\mathrel{=}\mathbf{if}\;\Varid{c}\equiv \mathrm{0}\;\mathbf{then}\;\Varid{a}\mathbin{+}\mathrm{1}\;\mathbf{else}\;\Varid{a}\end{lcbr}}
 %
 \just\equiv{ igualdade extensional , def-cond }
 %
-    \ensuremath{\begin{lcbr}h_1 \mathrel{=}\underline{\mathrm{0}}\\h_2 \mathrel{=}(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1\end{lcbr}}
+    \ensuremath{\begin{lcbr}h_1 \mathrel{=}\underline{\Varid{zero}}\\h_2 \mathrel{=}(\equiv \mathrm{0})\comp \p2\comp \p2\comp \overline{\p2}\to (\succ )\comp \p1\comp \overline{\p2},\p1\comp \overline{\p2}\end{lcbr}}
 %
 \just\equiv{ \ensuremath{\Varid{h}\mathrel{=}\alt{h_1 }{h_2 }} }
 %
-    \ensuremath{\Varid{h}\mathrel{=}\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1}}
+    \ensuremath{\Varid{h}\mathrel{=}\alt{\underline{\Varid{zero}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\comp \overline{\p2}\to (\succ )\comp \p1\comp \overline{\p2},\p1\comp \overline{\p2}}}
 \end{eqnarray*}
 \item Equação nº2
 \begin{eqnarray*}
@@ -1256,15 +1256,15 @@ modifica-se as equações de modo individual.
 %
 \just\equiv{ def-(r d) , igualdade extensional }
 %
-    \ensuremath{\begin{lcbr}k_1 \mathrel{=}\underline{\mathrm{0}}\\k_2 \;(\Varid{a},(\Varid{b},\Varid{c}))\mathrel{=}\mathbf{if}\;\Varid{c}\equiv \mathrm{0}\;\mathbf{then}\;\mathrm{0}\;\mathbf{else}\;\mathrm{1}\mathbin{+}\Varid{b}\end{lcbr}}
+    \ensuremath{\begin{lcbr}k_1 \mathrel{=}\underline{\Varid{zero}}\\k_2 \;\Varid{d}\;(\Varid{a},(\Varid{b},\Varid{c}))\mathrel{=}\mathbf{if}\;\Varid{c}\equiv \mathrm{0}\;\mathbf{then}\;\mathrm{0}\;\mathbf{else}\;\mathrm{1}\mathbin{+}\Varid{b}\end{lcbr}}
 %
 \just\equiv{ igualdade extensional , def-cond , def-const }
 %
-    \ensuremath{\begin{lcbr}k_1 \mathrel{=}\underline{\mathrm{0}}\\k_2 \mathrel{=}(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2\end{lcbr}}
+    \ensuremath{\begin{lcbr}k_1 \mathrel{=}\underline{\Varid{zero}}\\k_2 \mathrel{=}(\equiv \mathrm{0})\comp \p2\comp \p2\comp \overline{\p2}\to \underline{\Varid{zero}},(\succ )\comp \p1\comp \p2\comp \overline{\p2}\end{lcbr}}
 %
 \just\equiv{ \ensuremath{\Varid{k}\mathrel{=}\alt{k_1 }{k_2 }} }
 %
-    \ensuremath{\Varid{k}\mathrel{=}\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2}}
+    \ensuremath{\Varid{k}\mathrel{=}\alt{\underline{\Varid{zero}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\comp \overline{\p2}\to \underline{\Varid{zero}},(\succ )\comp \p1\comp \p2\comp \overline{\p2}}}
 \end{eqnarray*}
 \item Equação nº3
 \begin{eqnarray*}
@@ -1281,57 +1281,53 @@ modifica-se as equações de modo individual.
 %
 \just\equiv{ def-(c d) , igualdade extensional }
 %
-    \ensuremath{\begin{lcbr}l_1 \mathrel{=}\underline{\Varid{d}}\\l_2 \;(\Varid{a},(\Varid{b},\Varid{c}))\mathrel{=}\mathbf{if}\;\Varid{c}\equiv \mathrm{0}\;\mathbf{then}\;\Varid{d}\;\mathbf{else}\;\Varid{c}\mathbin{-}\mathrm{1}\end{lcbr}}
+    \ensuremath{\begin{lcbr}l_1 \mathrel{=}\underline{\underline{\Varid{d}}}\\l_2 \;\Varid{d}\;(\Varid{a},(\Varid{b},\Varid{c}))\mathrel{=}\mathbf{if}\;\Varid{c}\equiv \mathrm{0}\;\mathbf{then}\;\Varid{d}\;\mathbf{else}\;\Varid{c}\mathbin{-}\mathrm{1}\end{lcbr}}
 %
 \just\equiv{ igualdade extensional , def-cond }
 %
-    \ensuremath{\begin{lcbr}l_1 \mathrel{=}\underline{\Varid{d}}\\l_2 \mathrel{=}(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2\end{lcbr}}
+    \ensuremath{\begin{lcbr}l_1 \mathrel{=}\underline{\underline{\Varid{d}}}\\l_2 \mathrel{=}(\equiv \mathrm{0})\comp \p2\comp \p2\comp \overline{\p2}\to \underline{\underline{\Varid{d}}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2\comp \overline{\p2}\end{lcbr}}
 %
 \just\equiv{ \ensuremath{\Varid{l}\mathrel{=}\alt{l_1 }{l_2 }} }
 %
-    \ensuremath{\Varid{l}\mathrel{=}\alt{\underline{\Varid{d}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}}
+    \ensuremath{\Varid{l}\mathrel{=}\alt{\underline{\underline{\Varid{d}}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\comp \overline{\p2}\to \underline{\underline{\Varid{d}}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2\comp \overline{\p2}}}
 \end{eqnarray*}
 \end{itemize}
 Como já definimos \ensuremath{\Varid{h}}, \ensuremath{\Varid{k}} e \ensuremath{\Varid{l}} temos o seguinte:
 \begin{eqnarray*}
 \start
-    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\(\Varid{r}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\(\Varid{c}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\Varid{d}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
+    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\Varid{zero}}}{h_1 }\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\(\Varid{r}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\Varid{zero}}}{k_2 }\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\(\Varid{c}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\underline{\Varid{d}}}}{l_2 }\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
 %
 \just\equiv{ fokkinga }
 %
     \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}}
-    \ensuremath{\cata{\conj{\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1}}{\conj{\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2}}{(\alt{\underline{\Varid{d}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2})}}}}
+    \ensuremath{\cata{\conj{\alt{\underline{\Varid{zero}}}{h_2 }}{\conj{\alt{\underline{\Varid{zero}}}{k_2 }}{\alt{\underline{\underline{\Varid{d}}}}{l_2 }}}}}
 %
 \just\equiv{ lei da troca }
 %
-    \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\cata{\conj{\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1}}{\alt{\conj{\underline{\mathrm{0}}}{\underline{\Varid{d}}}}{\conj{(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}}}}}
+    \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\cata{\conj{\alt{\underline{\Varid{zero}}}{h_2 }}{\alt{\conj{\underline{\Varid{zero}}}{\underline{\underline{\Varid{d}}}}}{\conj{k_2 }{l_2 }}}}}
 %
 \just\equiv{ lei da troca }
 %
-    \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\cata{\alt{\conj{\underline{\mathrm{0}}}{\conj{\underline{\mathrm{0}}}{\underline{\Varid{d}}}}}{\conj{(\equiv \mathrm{0})\comp \p1\comp \p1\to (\succ )\comp \p1,\mathbin{+}\mathrm{1}}{\conj{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ \comp \p1\comp \p2)}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}}}}}
+    \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\cata{\alt{\conj{\underline{\Varid{zero}}}{\conj{\underline{\Varid{zero}}}{\underline{\underline{\Varid{d}}}}}}{\conj{h_2 }{\conj{k_2 }{l_2 }}}}}
 %
 \just\equiv{ igualdade extensional, def-split, def-const}
 %
-    \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\cata{\alt{\underline{(\mathrm{0},(\mathrm{0},\Varid{d}))}}{\conj{(\equiv \mathrm{0})\comp \p1\comp \p1\to (\succ )\comp \p1,\mathbin{+}\mathrm{1}}{\conj{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ \comp \p1\comp \p2)}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}}}}}
+    \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\cata{\alt{\underline{(\Varid{zero},(\Varid{zero},\underline{\Varid{d}}))}}{\conj{h_2 }{\conj{k_2 }{l_2 }}}}}
 %
 \just\equiv{ def for }
 %
-    \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\for{\conj{(\equiv \mathrm{0})\comp \p1\comp \p1\to (\succ )\comp \p1,\mathbin{+}\mathrm{1}}{\conj{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ \comp \p1\comp \p2)}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}}}\ {(\mathrm{0},(\mathrm{0},\Varid{d}))}}
+    \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\for{\conj{h_2 }{\conj{k_2 }{l_2 }}}\ {(\mathrm{0},(\mathrm{0},\Varid{d}))}}
 \end{eqnarray*}
 Prova-se, agora, a igualdade entre (g d) e o split que se encontra no ciclo for obtido.
 \begin{eqnarray*}
 \start
-    \ensuremath{(\Varid{g}\;\Varid{d})\mathrel{=}\conj{(\equiv \mathrm{0})\comp \p1\comp \p1\to (\succ )\comp \p1,\mathbin{+}\mathrm{1}}{\conj{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ \comp \p1\comp \p2)}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}}}
+    \ensuremath{(\Varid{g}\;\Varid{d})\mathrel{=}\conj{h_2 }{\conj{k_2 }{l_2 }}}
 %
 \just\equiv{ igualdade extensional, def-split }
 %
-    \ensuremath{\Varid{g}\;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c}))\mathrel{=}(((\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1)\;(\Varid{q},(\Varid{r},\Varid{c})),(((\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2)\;(\Varid{q},(\Varid{r},\Varid{c})),((\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2)))}
+    \ensuremath{\Varid{g}\;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c}))\mathrel{=}(h_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c})),(k_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c})),l_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c}))))}
 %
-\just\equiv{ def \ensuremath{\Varid{p}\to \Varid{f},\Varid{g}} }
-%
-    \ensuremath{\begin{lcbr}\Varid{g}\;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c}))\mathrel{=}(\equiv \mathrm{0})\comp \p2\comp \p2\;(\Varid{q},(\Varid{r},\Varid{c}))\Rightarrow((\succ )\comp \p1\;(\Varid{q},(\Varid{r},\Varid{c})),\underline{\mathrm{0}}\;(\Varid{q},(\Varid{r},\Varid{c})),\underline{\Varid{d}}\;(\Varid{q},(\Varid{r},\Varid{c})))\\\Varid{g}\;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c}))\mathrel{=}\neg \;(\equiv \mathrm{0})\comp \p2\comp \p2\;(\Varid{q},(\Varid{r},\Varid{c}))\Rightarrow(\p1\;(\Varid{q},(\Varid{r},\Varid{c})),(\succ )\comp \p1\comp \p2\;(\Varid{q},(\Varid{r},\Varid{c})),(\mathbin{-}\mathrm{1})\comp \p2\comp \p2\;(\Varid{q},(\Varid{r},\Varid{c})))\end{lcbr}}
-%
-\just\equiv{ def succ, def-const, def-proj }
+\just\equiv{ def \ensuremath{\Varid{p}\to \Varid{f},\Varid{g}},  def succ, def-const, def-proj, curry }
 %
     \ensuremath{\begin{lcbr}\Varid{g}\;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c}))\mathrel{=}(\equiv \mathrm{0})\;\Varid{c}\Rightarrow(\Varid{q}\mathbin{+}\mathrm{1},(\mathrm{0},\Varid{d}))\\\Varid{g}\;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c}))\mathrel{=}\neg \;(\equiv \mathrm{0})\;\Varid{c}\Rightarrow(\Varid{q},(\Varid{r}\mathbin{+}\mathrm{1},\Varid{c}\mathbin{-}\mathrm{1}))\end{lcbr}}
 %
@@ -1563,6 +1559,9 @@ Os genes do hilomorfismo \ensuremath{\Varid{sierpinski}} são:
 \>[6]{}\Varid{t3}\mathrel{=}(((\Varid{x},\Varid{y}),\Varid{s}\div \mathrm{2}),\Varid{n}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
+\\
+\\
+Nota: Ao correr a função \ensuremath{\Varid{teste}} já definida o ficheiro html não abre automaticamente, sendo necessário abri-lo manualmente.
 
 \subsection*{Problema 4}
 
@@ -1575,7 +1574,7 @@ Os genes do hilomorfismo \ensuremath{\Varid{sierpinski}} são:
 \>[B]{}\Varid{propagate}\;\Varid{f}\mathrel{=}\cataList{\Varid{g}\;\Varid{f}}\;\mathbf{where}{}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
-\>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\Varid{return}}{\cdot }\comp (\Varid{nil})\;(g_2 \;\Varid{f}){}\<[E]%
+\>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\Varid{return}\comp (\Varid{nil})}{g_2 \;\Varid{f}}{}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
 \>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\bot {}\<[E]%
