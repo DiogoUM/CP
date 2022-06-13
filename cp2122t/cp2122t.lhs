@@ -122,6 +122,7 @@
 %format (plus (f)(g)) = "{" f "}\plus{" g "}"
 %format ++ = "\mathbin{+\!\!\!+}"
 %format Integer  = "\mathbb{Z}"
+%format (lcbr3 (x)(y)(z)) = "\begin{lcbr}" x "\\" y "\\" z "\end{lcbr}"
 \def\plus{\mathbin{\dagger}}
 
 %---------------------------------------------------------------------------
@@ -893,13 +894,13 @@ A referida lei de recurssividade mútua é a seguinte:
 
 \begin{eqnarray*}
 \start%plroblema com os sistemas, uma vez que o lcbr so recebe 2 argumentos e não existe nenhum análogo que receba 3
-    |lcbr(
+    |lcbr3(
         f . in = h . F (split (f) (split (g) (j)))
     )(
         g . in = k . F (split (f) (split (g) (j)))
-    )
+    )(
         j . in = l . F (split (f) (split (g) (j)))
-    |
+    )|
 %
 \equiv
 %
@@ -914,33 +915,33 @@ Para tal calcula-se o seguinte:
 %
 \just\equiv{ lei da recursividade mútua (3 funções)}
 %
-    |lcbr(
+    |lcbr3(
         (q d) . in = h . F (split (q d) (split (r d) (c d)))
     )(
         (r d) . in = k . F (split (q d) (split (r d) (c d)))
-    )
+    )(
         (c d) . in = l . F (split (q d) (split (r d) (c d)))
-    |
+    )|
 %
 \just\equiv{ def-in , |F f = id + f| }
 %
-    |lcbr(
+    |lcbr3(
         (q d) . (either (const (0)) ((succ))) = h . (id + split (q d) (split (r d) (c d)))
     )(
         (r d) . (either (const (0)) ((succ))) = k . (id + split (q d) (split (r d) (c d)))
-    )
+    )(
         (c d) . (either (const (0)) ((succ))) = l . (id + split (q d) (split (r d) (c d)))
-    |
+    )|
 %
 \just\equiv{ fusão-+ , absorção-+ , |h = (either (h1) (h2)) , k = (either (k1) (k2)) , l = (either (l1) (l2))| }
 %
-    |lcbr(
+    |lcbr3(
         (either ((q d) . const (0)) ((q d) . (succ))) = (either (h1) (h2 . split (q d) (split (r d) (c d))))
     )(
         (either ((r d) . const (0)) ((r d) . (succ))) = (either (k1) (k2 . split (q d) (split (r d) (c d))))
-    )
+    )(
         (either ((c d) . const (0)) ((c d) . (succ))) = (either (l1) (l2 . split (q d) (split (r d) (c d))))
-    |
+    )|
 \end{eqnarray*}
 Com o intuito do sistema não ficar muito extenso e de difícil leitura, 
 modifica-se as equações de modo individual.
@@ -1072,13 +1073,13 @@ modifica-se as equações de modo individual.
 Como já definimos |h|, |k| e |l| temos o seguinte:
 \begin{eqnarray*}
 \start
-    |lcbr(
+    |lcbr3(
         (q d) . in = either (const (0)) ((== 0) . p2 . p2 -> (succ) . p1, p1) . F (split (q d) (split (r d) (c d)))
     )(
         (r d) . in = either (const (0)) ((== 0) . p2 . p2 -> const (0), (succ) . p1 . p2) . F (split (q d) (split (r d) (c d)))
-    )
+    )(
         (c d) . in = either (const (d)) ((== 0) . p2 . p2 -> const (d), (-1) . p2 . p2) . F (split (q d) (split (r d) (c d)))
-    |
+    )|
 %
 \just\equiv{ fokkinga }
 %

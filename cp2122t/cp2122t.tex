@@ -1188,7 +1188,7 @@ A referida lei de recurssividade mútua é a seguinte:
 
 \begin{eqnarray*}
 \start%plroblema com os sistemas, uma vez que o lcbr so recebe 2 argumentos e não existe nenhum análogo que receba 3
-    \ensuremath{\begin{lcbr}\Varid{f}\comp \mathbf{in}\mathrel{=}\Varid{h}\comp \Conid{F}\;\conj{\Varid{f}}{\conj{\Varid{g}}{\Varid{j}}}\\\Varid{g}\comp \mathbf{in}\mathrel{=}\Varid{k}\comp \Conid{F}\;\conj{\Varid{f}}{\conj{\Varid{g}}{\Varid{j}}}\end{lcbr}\;\Varid{j}\comp \mathbf{in}\mathrel{=}\Varid{l}\comp \Conid{F}\;\conj{\Varid{f}}{\conj{\Varid{g}}{\Varid{j}}}}
+    \ensuremath{\begin{lcbr}\Varid{f}\comp \mathbf{in}\mathrel{=}\Varid{h}\comp \Conid{F}\;\conj{\Varid{f}}{\conj{\Varid{g}}{\Varid{j}}}\\\Varid{g}\comp \mathbf{in}\mathrel{=}\Varid{k}\comp \Conid{F}\;\conj{\Varid{f}}{\conj{\Varid{g}}{\Varid{j}}}\\\Varid{j}\comp \mathbf{in}\mathrel{=}\Varid{l}\comp \Conid{F}\;\conj{\Varid{f}}{\conj{\Varid{g}}{\Varid{j}}}\end{lcbr}}
 %
 \equiv
 %
@@ -1203,15 +1203,15 @@ Para tal calcula-se o seguinte:
 %
 \just\equiv{ lei da recursividade mútua (3 funções)}
 %
-    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\Varid{h}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\(\Varid{r}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\Varid{k}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}\;(\Varid{c}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\Varid{l}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}
+    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\Varid{h}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\(\Varid{r}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\Varid{k}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\(\Varid{c}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\Varid{l}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
 %
 \just\equiv{ def-in , \ensuremath{\Conid{F}\;\Varid{f}\mathrel{=}\Varid{id}\mathbin{+}\Varid{f}} }
 %
-    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{(\succ )}\mathrel{=}\Varid{h}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\\(\Varid{r}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{(\succ )}\mathrel{=}\Varid{k}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}\;(\Varid{c}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{(\succ )}\mathrel{=}\Varid{l}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})}
+    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{(\succ )}\mathrel{=}\Varid{h}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\\(\Varid{r}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{(\succ )}\mathrel{=}\Varid{k}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\\(\Varid{c}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{(\succ )}\mathrel{=}\Varid{l}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}}
 %
 \just\equiv{ fusão-+ , absorção-+ , \ensuremath{\Varid{h}\mathrel{=}\alt{h_1 }{h_2 },\Varid{k}\mathrel{=}\alt{k_1 }{k_2 },\Varid{l}\mathrel{=}\alt{l_1 }{l_2 }} }
 %
-    \ensuremath{\begin{lcbr}\alt{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{q}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{h_1 }{h_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}\\\alt{(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{r}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{k_1 }{k_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}\end{lcbr}\;\alt{(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{c}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{l_1 }{l_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}}
+    \ensuremath{\begin{lcbr}\alt{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{q}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{h_1 }{h_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}\\\alt{(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{r}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{k_1 }{k_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}\\\alt{(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{c}\;\Varid{d})\comp (\succ )}\mathrel{=}\alt{l_1 }{l_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}\end{lcbr}}
 \end{eqnarray*}
 Com o intuito do sistema não ficar muito extenso e de difícil leitura, 
 modifica-se as equações de modo individual.
@@ -1295,7 +1295,7 @@ modifica-se as equações de modo individual.
 Como já definimos \ensuremath{\Varid{h}}, \ensuremath{\Varid{k}} e \ensuremath{\Varid{l}} temos o seguinte:
 \begin{eqnarray*}
 \start
-    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\(\Varid{r}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}\;(\Varid{c}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\Varid{d}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}}
+    \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to (\succ )\comp \p1,\p1}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\(\Varid{r}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\mathrm{0}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\mathrm{0}},(\succ )\comp \p1\comp \p2}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\\(\Varid{c}\;\Varid{d})\comp \mathbf{in}\mathrel{=}\alt{\underline{\Varid{d}}}{(\equiv \mathrm{0})\comp \p2\comp \p2\to \underline{\Varid{d}},(\mathbin{-}\mathrm{1})\comp \p2\comp \p2}\comp \Conid{F}\;\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
 %
 \just\equiv{ fokkinga }
 %
