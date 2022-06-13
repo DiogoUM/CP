@@ -1357,7 +1357,7 @@ g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
 \begin{code}
 propagate :: Monad m => (t -> m a) -> [t] -> m [a]
 propagate f = cataList (g f) where
-   g f = either return . (nil) (g2 f)
+   g f = either (return . (nil)) (g2 f)
    g2 f (a,b) = undefined
 \end{code}
 
