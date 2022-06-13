@@ -1608,9 +1608,10 @@ Nota: Ao correr a função \ensuremath{\Varid{teste}} já definida o ficheiro ht
 \>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\Varid{return}\comp (\Varid{nil})}{g_2 \;\Varid{f}}{}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
-\>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\bot {}\<[E]%
+\>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\mathbf{do}\;\{\mskip1.5mu \Varid{x}\leftarrow \mathsf{fmap}\;(v_3 )\;(\Varid{f}\;(\Varid{a},\Varid{a},\Varid{a}));\Varid{y}\leftarrow \Varid{b};\Varid{return}\;(\Varid{x}\mathbin{:}\Varid{y})\mskip1.5mu\}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
+
 A função \ensuremath{\Varid{bflip3}}, a programar a seguir, deverá estender \ensuremath{\Varid{bflip}} aos três bits da entrada:
 
 \begin{hscode}\SaveRestoreHook

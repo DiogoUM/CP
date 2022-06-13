@@ -1375,8 +1375,9 @@ propagate f = cataList (g f) where
 propagate3 :: (Monad m) => (Bit3 -> m Bit3) -> [Bit] -> m [Bit]
 propagate3 f = cataList (g f) where
    g f = either (return . (nil)) (g2 f)
-   g2 f (a,b) = undefined
+   g2 f (a,b) = do{x <- fmap (v3) ( f(a,a,a) ); y <-b ; return (x:y)}
 \end{code}
+
 A função |bflip3|, a programar a seguir, deverá estender |bflip| aos três bits da entrada:
 
 \begin{code}
