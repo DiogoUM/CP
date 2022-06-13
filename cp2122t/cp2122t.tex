@@ -1530,80 +1530,37 @@ No sentido de se definir o gene do anamorfismo, foi, também, realizado o seu di
 Neste diagrama pode-se observar os tipos recebidos e devolvidos pelas diferentes
  funções, nomeadamente de \ensuremath{g_2 }, isto é, do gene do anamorfismo. Como o tipo
  recebido é um par e o devolvido é um Either, é imediata a necessidade da 
-utilização das funções \ensuremath{i_1} e \ensuremath{i_2}. Tendo na segunda componente do Either três
- pares, verifica-se também a necessidade do uso de split's. Isto encontra-se
- explícito no seguinte diagrama.
-%g2
-\begin{eqnarray*}
-\xymatrix@C=2cm{
-    \ensuremath{(\Conid{Tri}\times\N_0)}
-           \ar[d]^-{\ensuremath{\conj{i_1\comp \p1}{i_2\comp \conj{\conj{\Varid{t1}}{\Varid{t2}}}{\Varid{t3}}}}}
-\\
-    \ensuremath{\Conid{Tri}\mathbin{+}(((\Conid{Tri}\times\N_0)\times(\Conid{Tri}\times\N_0))\times(\Conid{Tri}\times\N_0))}
-}
-\end{eqnarray*}
-A fim de ficar mais percetível, mostra-se, abaixo, os diferentes diagramas para \ensuremath{\Varid{t1}}, \ensuremath{\Varid{t2}} e \ensuremath{\Varid{t3}}.
-
-O objetivo destas funções é estabelecer os novos vértices e tamanhos dos catetos
- dos três triângulos que se vão formar, para depois formar uma \ensuremath{\mathsf{LTree3}} com esses 
-valores. 
+utilização das funções \ensuremath{i_1} e \ensuremath{i_2}. Caso o número referente à profundidade for 0 o gene vai devolver o triângulo. Caso contrário, este, de modo recursivo, vai criar os três triângulos com os respetivos vértices e tamanho dos catetos, diminuindo um ao nível de profundidade. A seguir explicam-se como se formam os diferentes triângulos (através de \ensuremath{\Varid{t1}}, \ensuremath{\Varid{t2}} e \ensuremath{\Varid{t3}}).
 \\
 \\
-\ensuremath{\Varid{t1}} tem a funcionalidade de estabelecer os dados para o triângulo que vai ser criado à direita, somando à coordenada x metade do tamanho do cateto do triângulo original e, por sua vez, dividindo o tamanho do cateto por dois. O diagrama representa essa transformação.
-%t1
-\begin{eqnarray*}
-\xymatrix@C=2cm{
-    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
-           \ar[d]^-{\ensuremath{\conj{\conj{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p1\times(\mathbin{/}\mathrm{2}))}{\p2\comp \p1}}{(\mathbin{/}\mathrm{2})\comp \p2}\times(\Varid{pred})}}
-\\
-    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
-}
-\end{eqnarray*}
+\ensuremath{\Varid{t1}} cria um triângulo somando à coordenada x metade do tamanho do cateto do triângulo da profundidade superior e, por sua vez, dividindo o tamanho do cateto por dois. 
 \\
 \\
-\ensuremath{\Varid{t2}} tem uma funcionalidade análoga ao \ensuremath{\Varid{t1}}, mas tem como objetivo final criar o triângulo acima, para isso modifica a coordenada y talcomo é feito em \ensuremath{\Varid{t1}} e dividindo, também, o tamanho do cateto por dois. A representação de \ensuremath{\Varid{t2}} é feita através deste diagrama.
-%t2
-\begin{eqnarray*}
-\xymatrix@C=2cm{
-    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
-           \ar[d]^-{\ensuremath{\conj{\conj{\p1\comp \p1}{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p2\times(\mathbin{/}\mathrm{2}))}}{(\mathbin{/}\mathrm{2})\comp \p2}\times(\Varid{pred})}}
-\\
-    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
-}
-\end{eqnarray*}
+\ensuremath{\Varid{t2}} modifica a coordenada y tal como é feito em \ensuremath{\Varid{t1}} e dividindo, também, o tamanho do cateto por dois, de forma a criar outro triângulo.
 \\
 \\
-Por último, \ensuremath{\Varid{t3}} cria o triângulo cujas coordenadas se mantém e simplesmente se reduz o tamanho do cateto. Desta forma, defini-se o tamanha do cateto sendo igual à sua metade, como se pode ver no diagrama abaixo.
-%t3
-\begin{eqnarray*}
-\xymatrix@C=2cm{
-    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
-           \ar[d]^-{\ensuremath{((\Varid{id}\times\Varid{id})\times(\mathbin{/}\mathrm{2}))\times(\Varid{pred})}}
-\\
-    \ensuremath{((\N_0\times\N_0)\times\N_0)\times\N_0}
-}
-\end{eqnarray*}
+Por último, \ensuremath{\Varid{t3}} cria o triângulo cujas coordenadas se mantêm e apenas se reduz o tamanho do cateto. 
 \\
 \\
-A junção destas funções depois destes procedimentos para representar os genes do hilomorfismo \ensuremath{\Varid{sierpinski}} é:
+Os genes do hilomorfismo \ensuremath{\Varid{sierpinski}} são:
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{6}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}g_1 \mathrel{=}\alt{\Varid{singl}}{\uncurry{(\mathbin{+\!\!\!+})}\comp (\uncurry{(\mathbin{+\!\!\!+})}\times\Varid{id})}{}\<[E]%
+\>[B]{}g_1 \mathrel{=}\alt{\Varid{singl}}{(\mathsf{conc})\comp ((\mathsf{conc})\times\Varid{id})}{}\<[E]%
 \\[\blanklineskip]%
 \>[B]{}g_2 \;(\Varid{t},\mathrm{0})\mathrel{=}i_1\;\Varid{t}{}\<[E]%
 \\
 \>[B]{}g_2 \;(((\Varid{x},\Varid{y}),\Varid{s}),\Varid{n}\mathbin{+}\mathrm{1})\mathrel{=}i_2\;((\Varid{t1},\Varid{t2}),\Varid{t3})\;\mathbf{where}{}\<[E]%
 \\
 \>[B]{}\hsindent{6}{}\<[6]%
-\>[6]{}\Varid{t1}\mathrel{=}\conj{\conj{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p1\times(\mathbin{/}\mathrm{2}))}{\p2\comp \p1}}{(\mathbin{/}\mathrm{2})\comp \p2}\times(\Varid{pred}){}\<[E]%
+\>[6]{}\Varid{t1}\mathrel{=}(((\Varid{x}\mathbin{+}\Varid{s}\div \mathrm{2},\Varid{y}),\Varid{s}\div \mathrm{2}),\Varid{n}){}\<[E]%
 \\
 \>[B]{}\hsindent{6}{}\<[6]%
-\>[6]{}\Varid{t2}\mathrel{=}\conj{\conj{\p1\comp \p1}{\uncurry{(\mathbin{+\!\!\!+})}\comp (\p2\times(\mathbin{/}\mathrm{2}))}}{(\mathbin{/}\mathrm{2})\comp \p2}\times(\Varid{pred}){}\<[E]%
+\>[6]{}\Varid{t2}\mathrel{=}(((\Varid{x},\Varid{y}\mathbin{+}\Varid{s}\div \mathrm{2}),\Varid{s}\div \mathrm{2}),\Varid{n}){}\<[E]%
 \\
 \>[B]{}\hsindent{6}{}\<[6]%
-\>[6]{}\Varid{t3}\mathrel{=}((\Varid{id}\times\Varid{id})\times(\mathbin{/}\mathrm{2}))\times(\Varid{pred}){}\<[E]%
+\>[6]{}\Varid{t3}\mathrel{=}(((\Varid{x},\Varid{y}),\Varid{s}\div \mathrm{2}),\Varid{n}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
@@ -1618,7 +1575,7 @@ A junção destas funções depois destes procedimentos para representar os gene
 \>[B]{}\Varid{propagate}\;\Varid{f}\mathrel{=}\cataList{\Varid{g}\;\Varid{f}}\;\mathbf{where}{}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
-\>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\bot }{g_2 \;\Varid{f}}{}\<[E]%
+\>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\Varid{return}}{\cdot }\comp (\Varid{nil})\;(g_2 \;\Varid{f}){}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
 \>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\bot {}\<[E]%

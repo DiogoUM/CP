@@ -1329,64 +1329,21 @@ No sentido de se definir o gene do anamorfismo, foi, também, realizado o seu di
 Neste diagrama pode-se observar os tipos recebidos e devolvidos pelas diferentes
  funções, nomeadamente de |g2|, isto é, do gene do anamorfismo. Como o tipo
  recebido é um par e o devolvido é um Either, é imediata a necessidade da 
-utilização das funções |i1| e |i2|. Tendo na segunda componente do Either três
- pares, verifica-se também a necessidade do uso de split's. Isto encontra-se
- explícito no seguinte diagrama.
-%g2
-\begin{eqnarray*}
-\xymatrix@@C=2cm{
-    |(Tri >< Nat0)|
-           \ar[d]^-{|split (i1 . p1) (i2 . split (split (t1) (t2)) (t3))|}
-\\
-    |Tri + (((Tri >< Nat0) >< (Tri >< Nat0)) >< (Tri >< Nat0))|
-}
-\end{eqnarray*}
-A fim de ficar mais percetível, mostra-se, abaixo, os diferentes diagramas para |t1|, |t2| e |t3|.
-
-O objetivo destas funções é estabelecer os novos vértices e tamanhos dos catetos
- dos três triângulos que se vão formar, para depois formar uma |LTree3| com esses 
-valores. 
+utilização das funções |i1| e |i2|. Caso o número referente à profundidade for 0 o gene vai devolver o triângulo. Caso contrário, este, de modo recursivo, vai criar os três triângulos com os respetivos vértices e tamanho dos catetos, diminuindo um ao nível de profundidade. A seguir explicam-se como se formam os diferentes triângulos (através de |t1|, |t2| e |t3|).
 \\
 \\
-|t1| tem a funcionalidade de estabelecer os dados para o triângulo que vai ser criado à direita, somando à coordenada x metade do tamanho do cateto do triângulo original e, por sua vez, dividindo o tamanho do cateto por dois. O diagrama representa essa transformação.
-%t1
-\begin{eqnarray*}
-\xymatrix@@C=2cm{
-    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
-           \ar[d]^-{|split (split ((uncurry (++)) . (p1 >< (/2))) (p2 . p1)) ((/2) . p2) >< (pred)|}
-\\
-    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
-}
-\end{eqnarray*}
+|t1| cria um triângulo somando à coordenada x metade do tamanho do cateto do triângulo da profundidade superior e, por sua vez, dividindo o tamanho do cateto por dois. 
 \\
 \\
-|t2| tem uma funcionalidade análoga ao |t1|, mas tem como objetivo final criar o triângulo acima, para isso modifica a coordenada y talcomo é feito em |t1| e dividindo, também, o tamanho do cateto por dois. A representação de |t2| é feita através deste diagrama.
-%t2
-\begin{eqnarray*}
-\xymatrix@@C=2cm{
-    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
-           \ar[d]^-{|split (split (p1 . p1) ((uncurry (++)) . (p2 >< (/2)))) ((/2) . p2) >< (pred)|}
-\\
-    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
-}
-\end{eqnarray*}
+|t2| modifica a coordenada y tal como é feito em |t1| e dividindo, também, o tamanho do cateto por dois, de forma a criar outro triângulo.
 \\
 \\
-Por último, |t3| cria o triângulo cujas coordenadas se mantém e simplesmente se reduz o tamanho do cateto. Desta forma, defini-se o tamanha do cateto sendo igual à sua metade, como se pode ver no diagrama abaixo.
-%t3
-\begin{eqnarray*}
-\xymatrix@@C=2cm{
-    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
-           \ar[d]^-{|((id >< id) >< (/2)) >< (pred)|}
-\\
-    |((Nat0 >< Nat0) >< Nat0) >< Nat0|
-}
-\end{eqnarray*}
+Por último, |t3| cria o triângulo cujas coordenadas se mantêm e apenas se reduz o tamanho do cateto. 
 \\
 \\
-A junção destas funções depois destes procedimentos para representar os genes do hilomorfismo |sierpinski| é:
+Os genes do hilomorfismo |sierpinski| são:
 \begin{code}
-g1 = either singl ((uncurry (++)) . ((uncurry (++)) >< id))
+g1 = either singl ((conc) . ((conc) >< id))
 
 g2 (t,0) = i1 t
 g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
@@ -1400,7 +1357,7 @@ g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
 \begin{code}
 propagate :: Monad m => (t -> m a) -> [t] -> m [a]
 propagate f = cataList (g f) where
-   g f = either undefined (g2 f)
+   g f = either return . (nil) (g2 f)
    g2 f (a,b) = undefined
 \end{code}
 
