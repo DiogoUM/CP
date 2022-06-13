@@ -1358,7 +1358,7 @@ Nota: Ao correr a função |teste| já definida o ficheiro html não abre automa
            \ar[l]_-{|g|}
            \ar[d]^-{|id + propagate f >< id|}
 \\
-    .
+    | |
 &
     |1 + T(Bit) >< T(Bit*)|
             \ar[lu]^{|(either (return . nill) (g2 f))|}
