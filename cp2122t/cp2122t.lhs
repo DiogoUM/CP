@@ -889,7 +889,7 @@ No problema 1 quer-se mostrar a igualdade entre (aux d) e (loop d). Para o efeit
 obtida e mostrada no exercício 2 da ficha número 8 desta UC.
 \\
 \\
-A referida lei de recurssividade mútua foi a seguinte:
+A referida lei de recurssividade mútua é a seguinte:
 
 \begin{eqnarray*}
 \start%plroblema com os sistemas, uma vez que o lcbr so recebe 2 argumentos e não existe nenhum análogo que receba 3
@@ -1225,7 +1225,7 @@ Depois de h e k definidas, tem-se o seguinte.
 %
 \just\equiv{ fokkinga }
 %
-    |split (alice) (bob) = cata (split (either (id) ((uncurry max) . (p2 . p2))) (either (id) ((uncurry min) . (p1 >< p1))))|
+    |split (alice) (bob) = cata (split (either (id) ((uncurry max) . (p2 >< p2))) (either (id) ((uncurry min) . (p1 >< p1))))|
 \end{eqnarray*}
 Tendo como resultado a função \emph{both} definida como catamorfismo de LTree's.
 
