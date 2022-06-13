@@ -1342,6 +1342,8 @@ g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
 Nota: Ao correr a função |teste| já definida o ficheiro html não abre automaticamente, sendo necessário abri-lo manualmente.
 
 \subsection*{Problema 4}
+
+Para a resolução deste problema desenvolveu-se o seguinte diagrama para a respresentação do catamorfismo de listas |propagate|.
 \begin{eqnarray*}
 \xymatrix@@C=3cm@@R=1.7cm{
     |Bit*|
@@ -1364,20 +1366,23 @@ Nota: Ao correr a função |teste| já definida o ficheiro html não abre automa
             \ar[lu]^{|(either (return . nill) (g2 f))|}
 }
 \end{eqnarray*}
+Aqui é possível verificar que é necessária a aplicação de |bflip| em todos os elementos da lista de |Bits|. Com estes dados foi definida a função (g f).
+
 \begin{code}
 propagate :: Monad m => (t -> m a) -> [t] -> m [a]
 propagate f = cataList (g f) where
    g f = either (return . (nil)) (g2 f)
    g2 f (a,b) = do{x <- f a; y <- b; return (x:y)}
 \end{code}
-
+\\
+No |propagate3| o raciocínio usado foi similar ao do |propagate|, sendo que neste é realizado o |bflip3| o que implica a execução da função |fmap| e |v3| de modo a votar no bit mais frequente para uma maior probabilidade da resposta certa.
 \begin{code}
 propagate3 :: (Monad m) => (Bit3 -> m Bit3) -> [Bit] -> m [Bit]
 propagate3 f = cataList (g f) where
    g f = either (return . (nil)) (g2 f)
    g2 f (a,b) = do{x <- fmap (v3) ( f(a,a,a) ); y <-b ; return (x:y)}
 \end{code}
-
+\\
 A função |bflip3|, a programar a seguir, deverá estender |bflip| aos três bits da entrada:
 
 \begin{code}

@@ -1558,6 +1558,8 @@ Os genes do hilomorfismo \ensuremath{\Varid{sierpinski}} são:
 Nota: Ao correr a função \ensuremath{\Varid{teste}} já definida o ficheiro html não abre automaticamente, sendo necessário abri-lo manualmente.
 
 \subsection*{Problema 4}
+
+Para a resolução deste problema desenvolveu-se o seguinte diagrama para a respresentação do catamorfismo de listas \ensuremath{\Varid{propagate}}.
 \begin{eqnarray*}
 \xymatrix@C=3cm@R=1.7cm{
     \ensuremath{\Conid{Bit}\mathbin{*}}
@@ -1580,6 +1582,8 @@ Nota: Ao correr a função \ensuremath{\Varid{teste}} já definida o ficheiro ht
             \ar[lu]^{\ensuremath{\alt{\Varid{return}\comp \Varid{nill}}{g_2 \;\Varid{f}}}}
 }
 \end{eqnarray*}
+Aqui é possível verificar que é necessária a aplicação de \ensuremath{\Varid{bflip}} em todos os elementos da lista de \ensuremath{\Conid{Bits}}. Com estes dados foi definida a função (g f).
+
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{4}{@{}>{\hspre}l<{\hspost}@{}}%
@@ -1595,7 +1599,8 @@ Nota: Ao correr a função \ensuremath{\Varid{teste}} já definida o ficheiro ht
 \>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\mathbf{do}\;\{\mskip1.5mu \Varid{x}\leftarrow \Varid{f}\;\Varid{a};\Varid{y}\leftarrow \Varid{b};\Varid{return}\;(\Varid{x}\mathbin{:}\Varid{y})\mskip1.5mu\}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
-
+\\
+No \ensuremath{\Varid{propagate3}} o raciocínio usado foi similar ao do \ensuremath{\Varid{propagate}}, sendo que neste é realizado o \ensuremath{\Varid{bflip3}} o que implica a execução da função \ensuremath{\mathsf{fmap}} e \ensuremath{v_3 } de modo a votar no bit mais frequente para uma maior probabilidade da resposta certa.
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{4}{@{}>{\hspre}l<{\hspost}@{}}%
@@ -1611,7 +1616,7 @@ Nota: Ao correr a função \ensuremath{\Varid{teste}} já definida o ficheiro ht
 \>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\mathbf{do}\;\{\mskip1.5mu \Varid{x}\leftarrow \mathsf{fmap}\;(v_3 )\;(\Varid{f}\;(\Varid{a},\Varid{a},\Varid{a}));\Varid{y}\leftarrow \Varid{b};\Varid{return}\;(\Varid{x}\mathbin{:}\Varid{y})\mskip1.5mu\}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
-
+\\
 A função \ensuremath{\Varid{bflip3}}, a programar a seguir, deverá estender \ensuremath{\Varid{bflip}} aos três bits da entrada:
 
 \begin{hscode}\SaveRestoreHook
