@@ -1356,11 +1356,11 @@ Nota: Ao correr a função |teste| já definida o ficheiro html não abre automa
 &
     |1 + Bit >< T(Bit*)|
            \ar[l]_-{|g|}
-           \ar[d]^-{|id + propagate f >< if|}
+           \ar[d]^-{|id + propagate f >< id|}
 \\
     .
 &
-    |1 + T(Bit) >< T(Bin*)|
+    |1 + T(Bit) >< T(Bit*)|
             \ar[lu]^{|(either (return . nill) (g2 f))|}
 }
 \end{eqnarray*}
