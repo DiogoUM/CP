@@ -1427,13 +1427,7 @@ Tendo como resultado a função \emph{both} definida como catamorfismo de LTree'
 
 O raciocínio seguido nesta primeira parte do problema depende das diferentes funções definidas, pelo que vão ser explicadas separadamente.
 \begin{itemize}
-\item O \emph{inLTree3} recebe um Either onde a sua segunda componente é um par de um par, ou 
-seja, é do tipo ((\ensuremath{\mathsf{LTree3}} a,\ensuremath{\mathsf{LTree3}} a),\ensuremath{\mathsf{LTree3}} a). Foi assim definida uma vez que, 
-em haskell, não é possível a existência de um tuplo com três elementos. Esta 
-função devolve uma LTree3. Para tal ser executado, \emph{inLTree3} é formado 
-pelos construtures do tipo \ensuremath{\mathsf{LTree3}}, sendo que para os tipos de entrada e de Nodo 
-serem compatíveis é necessário recorrer ao uncurry duas vezes, de forma aos pares 
-recebidos ficarem em cadeia.
+\item O \emph{inLTree3} recebe um Either onde a sua segunda componente é um par e o seu primeiro elemento também o é, ou seja, é do tipo ((\ensuremath{\mathsf{LTree3}} a,\ensuremath{\mathsf{LTree3}} a),\ensuremath{\mathsf{LTree3}} a). Foi assim definida uma vez que, em haskell, não é possível a existência de um tuplo com três elementos. Esta função devolve uma LTree3. Para tal ser executado, \emph{inLTree3} é formado pelos construtures do tipo \ensuremath{\mathsf{LTree3}}, sendo que para ser possível a utilização de \ensuremath{\Conid{Nodo}} é necessária a realização do uncurry duas vezes consecutivas.
 \item Relativamente à função \emph{outLTree3} o mesmo tipo de pensamento de \emph{inLTree3} foi aqui utilizado. Neste caso, recebe uma \ensuremath{\mathsf{LTree3}} e devolve um Either. O modo de funcionamento é caso seja de tipo \ensuremath{\Conid{Tri}} devolve-o, caso contrário agrupa as três \ensuremath{\mathsf{LTree3}}'s num par de um par de modo a ser compatível com o tipo de saída da segunda componente do Either.
 \item A \emph{baseLTree3} é o bifuntor deste tipo (\ensuremath{\mathsf{LTree3}}), havendo dois parâmetros diferentes: o \ensuremath{\Conid{Tri}} e a \ensuremath{\mathsf{LTree3}}.
 \item \emph{recLTree3} é o functor de \ensuremath{\mathsf{LTree3}}, ou seja, é o bifuntor de id e de um f que irá receber.
@@ -1564,7 +1558,28 @@ Os genes do hilomorfismo \ensuremath{\Varid{sierpinski}} são:
 Nota: Ao correr a função \ensuremath{\Varid{teste}} já definida o ficheiro html não abre automaticamente, sendo necessário abri-lo manualmente.
 
 \subsection*{Problema 4}
-
+\begin{eqnarray*}
+\xymatrix@C=3cm@R=1.7cm{
+    \ensuremath{\Conid{Bit}\mathbin{*}}
+           \ar[d]_-{\ensuremath{\Varid{propagate}\;\Varid{f}}}
+           \ar@/_2pc/[r]_-{\ensuremath{\Varid{out}}}
+&
+    \ensuremath{\mathrm{1}\mathbin{+}\Conid{Bit}\times\Conid{Bit}\mathbin{*}}
+           \ar[d]^-{\ensuremath{\Varid{id}\mathbin{+}\Varid{id}\times\Varid{propagate}\;\Varid{f}}}
+           \ar@/_2pc/[l]_-{\ensuremath{\mathbf{in}}}
+\\
+    \ensuremath{\Conid{T}\;(\Conid{Bit}\mathbin{*})}
+&
+    \ensuremath{\mathrm{1}\mathbin{+}\Conid{Bit}\times\Conid{T}\;(\Conid{Bit}\mathbin{*})}
+           \ar[l]_-{\ensuremath{\Varid{g}}}
+           \ar[d]^-{\ensuremath{\Varid{id}\mathbin{+}\Varid{propagate}\;\Varid{f}\times\mathbf{if}}}
+\\
+    .
+&
+    \ensuremath{\mathrm{1}\mathbin{+}\Conid{T}\;(\Conid{Bit})\times\Conid{T}\;(\Conid{Bin}\mathbin{*})}
+            \ar[lu]^{\ensuremath{\alt{\Varid{return}\comp \Varid{nill}}{g_2 \;\Varid{f}}}}
+}
+\end{eqnarray*}
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{4}{@{}>{\hspre}l<{\hspost}@{}}%
@@ -1577,7 +1592,7 @@ Nota: Ao correr a função \ensuremath{\Varid{teste}} já definida o ficheiro ht
 \>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\Varid{return}\comp (\Varid{nil})}{g_2 \;\Varid{f}}{}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
-\>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\bot {}\<[E]%
+\>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\mathbf{do}\;\{\mskip1.5mu \Varid{x}\leftarrow \Varid{f}\;\Varid{a};\Varid{y}\leftarrow \Varid{b};\Varid{return}\;(\Varid{x}\mathbin{:}\Varid{y})\mskip1.5mu\}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
@@ -1590,7 +1605,7 @@ Nota: Ao correr a função \ensuremath{\Varid{teste}} já definida o ficheiro ht
 \>[B]{}\Varid{propagate3}\;\Varid{f}\mathrel{=}\cataList{\Varid{g}\;\Varid{f}}\;\mathbf{where}{}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
-\>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\bot }{g_2 \;\Varid{f}}{}\<[E]%
+\>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\Varid{return}\comp (\Varid{nil})}{g_2 \;\Varid{f}}{}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
 \>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\bot {}\<[E]%
@@ -1603,7 +1618,7 @@ A função \ensuremath{\Varid{bflip3}}, a programar a seguir, deverá estender \
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
 \>[B]{}\Varid{bflip3}\mathbin{::}\Conid{Bit3}\to \fun{Dist}\;\Conid{Bit3}{}\<[E]%
 \\
-\>[B]{}\Varid{bflip3}\;(\Varid{a},\Varid{b},\Varid{c})\mathrel{=}\mathbf{do}\;\{\mskip1.5mu \bot \mskip1.5mu\}{}\<[E]%
+\>[B]{}\Varid{bflip3}\;(\Varid{a},\Varid{b},\Varid{c})\mathrel{=}\mathbf{do}\;\{\mskip1.5mu \Varid{x}\leftarrow \Varid{bflip}\;\Varid{a};\Varid{y}\leftarrow \Varid{bflip}\;\Varid{b};\Varid{z}\leftarrow \Varid{bflip}\;\Varid{c};\Varid{return}\;(\Varid{x},\Varid{y},\Varid{z})\mskip1.5mu\}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 

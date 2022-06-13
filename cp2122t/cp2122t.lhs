@@ -1342,7 +1342,28 @@ g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
 Nota: Ao correr a função |teste| já definida o ficheiro html não abre automaticamente, sendo necessário abri-lo manualmente.
 
 \subsection*{Problema 4}
-
+\begin{eqnarray*}
+\xymatrix@@C=3cm@@R=1.7cm{
+    |Bit*|
+           \ar[d]_-{|propagate f|}
+           \ar@@/_2pc/[r]_-{|out|}
+&
+    |1 + Bit >< Bit*|
+           \ar[d]^-{|id + id >< propagate f|}
+           \ar@@/_2pc/[l]_-{|in|}
+\\
+    |T(Bit*)|
+&
+    |1 + Bit >< T(Bit*)|
+           \ar[l]_-{|g|}
+           \ar[d]^-{|id + propagate f >< if|}
+\\
+    .
+&
+    |1 + T(Bit) >< T(Bin*)|
+            \ar[lu]^{|(either (return . nill) (g2 f))|}
+}
+\end{eqnarray*}
 \begin{code}
 propagate :: Monad m => (t -> m a) -> [t] -> m [a]
 propagate f = cataList (g f) where
